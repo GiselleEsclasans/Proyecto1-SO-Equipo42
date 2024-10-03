@@ -4,6 +4,10 @@
  */
 package Classes;
 
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author gigie
@@ -12,11 +16,31 @@ public class ProjectManager extends Employee {
     private String states;
     private int faults;
 
-    public ProjectManager(String company, int id, int type, int days, int workDone, int salary, Storage workStorage) {
-        super(company, id, type, days, workDone, salary, workStorage);
+    public ProjectManager(String company, int id, int type, int days, int workDone, int salary, Storage workStorage, Semaphore m) {
+        super(company, id, type, days, workDone, salary, workStorage, m);
         this.states = "";
         this.faults = 0;
     }
+    
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                //primeras 16 horas cambia de estados
+                //Pago
+                //Actualiza días del contador
+                //35 minutos para vigilar PM
+                
+            
+            
+                Thread.sleep(dayDuration);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }}
+    
+    
+    
 
     /**
      * @return the states

@@ -8,6 +8,12 @@ package Classes;
  *
  * @author gigie
  */
+
+import DataStructure.Data;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
  
 public class Employee extends Thread {
     private String company;                 //Compañía que pertenece
@@ -22,9 +28,10 @@ public class Employee extends Thread {
     private int salary;                     //Salario por hora
     private float totalSalary;                //Salario total acumulado
     
+    private Semaphore mutex;                        //Semáforo
+    int dayDuration = Data.dayDuration;                         //5 segundos de duración
     
-    
-    public Employee(String company, int id, int type, int days, int workDone,int salary, Storage workStorage){
+    public Employee(String company, int id, int type, int days, int workDone,int salary, Storage workStorage, Semaphore m){
         this.company = company;
         this.id = id;
         this.type = type;
@@ -32,10 +39,37 @@ public class Employee extends Thread {
         this.workDone = workDone;
         this.WorkStorage = workStorage;
         this.totalSalary = 0;
+        this.mutex = m;
         
     }
 
     
+    
+    @Override
+        public void run(){
+            while(true){  
+                try {
+                    //Obtiene su Salario:
+                    
+                    //Producción:
+                    
+                    //Trabajar:
+                  
+                   
+                    System.out.println("Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
+                    
+                    sleep(this.dayDuration);
+                    
+                    
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+        }
+        
+      
+        
     
     
     
@@ -162,6 +196,20 @@ public class Employee extends Thread {
      */
     public void setTotalSalary(float totalSalary) {
         this.totalSalary = totalSalary;
+    }
+
+    /**
+     * @return the mutex
+     */
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    /**
+     * @param mutex the mutex to set
+     */
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
     }
     
     

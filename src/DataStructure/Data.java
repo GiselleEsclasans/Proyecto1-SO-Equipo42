@@ -9,6 +9,8 @@ package DataStructure;
  * @author gigie
  */
 public class Data {
+    public static int dayDuration = 5000;                        //5 segundos de duración
+    
     public final static String[] companies = {
         "Apple", "Hp"
     };
