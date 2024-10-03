@@ -39,6 +39,6 @@ public class Data {
      };
     
     public final static int[][] graphicCard = {
-        {2,3}, {5,2}                                //Hp  --- Apple
+        {2,3}, {5,2}                                //Hp  ---  Apple
     };  
 }
