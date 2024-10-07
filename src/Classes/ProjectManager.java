@@ -12,20 +12,20 @@ import java.util.logging.Logger;
  *
  * @author gigie
  */
-public class ProjectManager extends Employee {
+public class ProjectManager{
     private String states;
     private int faults;
 
-    public ProjectManager(String company, int id, int type, int days, int workDone, int salary, Storage workStorage, Semaphore m) {
-        super(company, id, type, days, workDone, salary, workStorage, m);
-        this.states = "";
-        this.faults = 0;
-    }
+    //public ProjectManager(String company, int id, int type, int days, int workDone, int salary, Storage workStorage, Semaphore m) {
+        //super(company, id, type, days, workDone, salary, workStorage, m);
+        //this.states = "";
+        //this.faults = 0;
+    //}
     
-    @Override
-    public void run() {
-        while (true) {
-            try {
+    //*@Override
+   // public void run() {
+       // while (true) {
+         //   try {
                 //primeras 16 horas cambia de estados
                 //Pago
                 //Actualiza días del contador
@@ -33,11 +33,11 @@ public class ProjectManager extends Employee {
                 
             
             
-                Thread.sleep(dayDuration);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }}
+            //    Thread.sleep(dayDuration);
+           // } //catch (InterruptedException ex) {
+            //    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
+           // }
+       // }}
     
     
     

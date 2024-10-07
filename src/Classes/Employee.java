@@ -30,8 +30,14 @@ public class Employee extends Thread {
     
     private Semaphore mutex;                        //Semáforo
     int dayDuration = Data.dayDuration;                         //5 segundos de duración
+    private float acc;
     
-    public Employee(String company, int id, int type, int days, int workDone,int salary, Storage workStorage, Semaphore m){
+ 
+    
+    private int productionRate; // Tasa de producción del trabajador
+    private int productionInterval; // Intervalo de producción del trabajador
+    
+    public Employee(String company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
         this.company = company;
         this.id = id;
         this.type = type;
@@ -40,35 +46,60 @@ public class Employee extends Thread {
         this.WorkStorage = workStorage;
         this.totalSalary = 0;
         this.mutex = m;
-        
+
+        //  tasa de producción, el intervalo de producción y el salario según el tipo de trabajador
+        this.productionRate = Data.productionRates[this.type];
+        this.productionInterval = Data.productionIntervals[this.type];
+        this.salary = Data.salary[this.type];
+        this.acc = 0;
     }
 
-    
+ 
     
     @Override
-        public void run(){
-            while(true){  
-                try {
-                    //Obtiene su Salario:
-                    
-                    //Producción:
-                    
-                    //Trabajar:
-                  
-                   
-                    System.out.println("Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
-                    
-                    sleep(this.dayDuration);
-                    
-                    
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
-                }
+    public void run() {
+        while (true) {
+            
+            try {
+                // Trabajar durante un día
+
+                earnSalary();
+                System.out.println("Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
+                work();
+                // Dormir durante un día
+                sleep(this.dayDuration);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
         }
+    }
+    
+    
+ 
+    public void earnSalary(){
+            this.totalSalary += this.salary*24;
+    }
         
-      
+        public void work() {
+        this.productionInterval--;
+        if (this.productionInterval == 0) {
+            try {
+                this.mutex.acquire();
+                this.WorkStorage.addToStorage(this.productionRate, this.WorkStorage);
+                this.productionInterval = Data.productionIntervals[this.type];
+                this.mutex.release();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+        
+        
+        
+   
+
+    
         
     
     

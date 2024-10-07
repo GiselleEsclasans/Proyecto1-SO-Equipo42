@@ -43,4 +43,28 @@ public class Data {
     public final static int[][] graphicCard = {
         {2,3}, {5,2}                                //Hp  ---  Apple
     };  
+    
+    public final static int[] productionRates = {
+        1, // Productores de placa base (1 placa base cada 3 días)
+        1, // Productores de CPUs (1 CPU cada 3 días)
+        2, // Productores de Memoria RAM (2 Memoria RAM cada día)
+        3, // Productores de Fuente de alimentación (3 Fuente de alimentación cada día)
+        1  // Productores de tarjetas gráficas (1 tarjeta gráfica cada 3 días)
+    };
+
+    public final static int[] productionIntervals = {
+        3, // Productores de placa base (cada 3 días)
+        3, // Productores de CPUs (cada 3 días)
+        1, // Productores de Memoria RAM (cada día)
+        1, // Productores de Fuente de alimentación (cada día)
+        3  // Productores de tarjetas gráficas (cada 3 días)
+    };
+    
+    public final static int[] storageCapacities = {
+        25, // Productores de placa base
+        20, // Productores de CPUs
+        55, // Productores de Memoria RAM
+        35, // Productores de Fuente de alimentación
+        10  // Productores de tarjetas gráficas
+    };
 }
