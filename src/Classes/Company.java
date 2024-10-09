@@ -14,6 +14,7 @@ public class Company {
     private Storage[] storages;
     private int dayCount;
     private ProjectManager projectManager;
+    private Director director;
     private Semaphore mutex;
     private int daysLeft;
 
@@ -32,6 +33,9 @@ public class Company {
         }
 
         this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration, this.daysLeft);
+        
+        this.director = new Director(this.company, this.mutex, this.projectManager);
+
     }
 
     public void distributeEmployees() {
@@ -67,6 +71,7 @@ public class Company {
         }
 
         this.projectManager.start();
+        this.director.start();
         System.out.println("Project started for " + this.company);
     }
 

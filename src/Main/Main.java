@@ -5,6 +5,7 @@
 package Main;
 
 import Classes.Company;
+import DataStructure.Data;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        int daysLeft = 30;
+        int daysLeft = Data.totalDays;
         
         Company company = new Company("APPLE", 20, daysLeft);
         Company company2 = new Company("HP", 15, daysLeft);

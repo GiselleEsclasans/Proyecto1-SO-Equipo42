@@ -15,6 +15,8 @@ public class Data {
         "APPLE", "HP"
     };
     
+    public static int totalDays = 30;
+    
     public final static int[] salary = {
         20, 26, 40, 16, 34, 50, 40, 60  
     };
