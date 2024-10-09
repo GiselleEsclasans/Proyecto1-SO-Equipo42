@@ -46,12 +46,20 @@ public class Employee extends Thread {
         this.WorkStorage = workStorage;
         this.totalSalary = 0;
         this.mutex = m;
-
-        //  tasa de producción, el intervalo de producción y el salario según el tipo de trabajador
-        this.productionRate = Data.productionRates[this.type];
-        this.productionInterval = Data.productionIntervals[this.type];
         this.salary = Data.salary[this.type];
         this.acc = 0;
+
+     
+        
+        if (this.company == "HP") {
+            this.productionRate = Data.productionRates[0][this.type];
+            this.productionInterval = Data.productionIntervals[0][this.type];
+        } else if (this.company == "APPLE") {
+            this.productionRate = Data.productionRates[1][this.type];
+            this.productionInterval = Data.productionIntervals[1][this.type];
+        } else {
+        throw new IllegalArgumentException("Compañía desconocida: " + this.company);
+        }   
     }
 
  
@@ -64,7 +72,7 @@ public class Employee extends Thread {
                 // Trabajar durante un día
 
                 earnSalary();
-                System.out.println("Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
+                System.out.println(this.company + " Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
                 work();
                 // Dormir durante un día
                 sleep(this.dayDuration);
@@ -86,7 +94,14 @@ public class Employee extends Thread {
             try {
                 this.mutex.acquire();
                 this.WorkStorage.addToStorage(this.productionRate, this.WorkStorage);
-                this.productionInterval = Data.productionIntervals[this.type];
+                if (this.company == "HP") {
+                    this.productionRate = Data.productionRates[0][this.type];
+                    this.productionInterval = Data.productionIntervals[0][this.type];
+                } else {
+                    this.productionRate = Data.productionRates[1][this.type];
+                    this.productionInterval = Data.productionIntervals[1][this.type];
+                }  
+               
                 this.mutex.release();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);

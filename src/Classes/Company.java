@@ -16,13 +16,16 @@ import javax.swing.Timer;
  * @author gigie
  */
 public class Company {
+    private String company;
     private int totalEmployees;
     private Employee[] employees;
     private Storage[] storages;
     private int dayCount;
-   
+    private ProjectManager projectManager;
+    private Semaphore mutex;
 
-    public Company(int totalEmployees) {
+    public Company(String company, int totalEmployees) {
+        this.company = company;
         this.totalEmployees = totalEmployees;
         this.employees = new Employee[totalEmployees];
         this.storages = new Storage[5]; // 5 tipos de trabajadores
@@ -34,6 +37,8 @@ public class Company {
             this.storages[i] = storage;
             
         }
+        
+        this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration);
     }
 
     public void distributeEmployees() {
@@ -56,7 +61,7 @@ public class Company {
         int employeeIndex = 0;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < employeeCounts[i]; j++) {
-                Employee employee = new Employee("Compañía", employeeIndex, i, 0, 0, this.storages[i], new Semaphore(1));
+                Employee employee = new Employee(this.company, employeeIndex, i, 0, 0, this.storages[i], new Semaphore(1));
                 this.employees[employeeIndex] = employee;
                 employeeIndex++;
             }
@@ -68,6 +73,8 @@ public class Company {
         for (Employee employee : employees) {
             employee.start();
         }
+        this.projectManager.start();
+        System.out.println("here");
     }
 
   
