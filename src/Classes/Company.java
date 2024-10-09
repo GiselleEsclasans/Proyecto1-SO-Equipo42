@@ -20,12 +20,15 @@ public class Company {
     private Employee[] employees;
     private Storage[] storages;
     private int dayCount;
+    private ProjectManager projectManager;
+    private Semaphore mutex;
    
 
     public Company(int totalEmployees) {
         this.totalEmployees = totalEmployees;
         this.employees = new Employee[totalEmployees];
         this.storages = new Storage[5]; // 5 tipos de trabajadores
+        this.mutex = new Semaphore(1);
 
         // Inicializar los almacenes con capacidades fijas
         for (int i = 0; i < 5; i++) {
@@ -34,6 +37,9 @@ public class Company {
             this.storages[i] = storage;
             
         }
+        
+        // Crear el Project Manager
+        this.projectManager = new ProjectManager("Compañía", this.mutex, Data.dayDuration);
     }
 
     public void distributeEmployees() {
@@ -68,6 +74,10 @@ public class Company {
         for (Employee employee : employees) {
             employee.start();
         }
+        
+        // Iniciar el trabajo del Project Manager
+        this.projectManager.start();
+        System.out.println("here");
     }
 
   
@@ -79,6 +89,10 @@ public class Company {
 
     public Storage[] getStorages() {
         return storages;
+    }
+    
+    public ProjectManager getProjectManager() {
+        return projectManager;
     }
     
     

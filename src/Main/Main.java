@@ -18,7 +18,10 @@ public class Main {
     public static void main(String[] args) {
     Company company = new Company(10);
     company.distributeEmployees();
-   
+       
     company.startWork();
-    
+
+//    Company companyAndres = new Company(20);
+//    companyAndres.distributeEmployees();
+//    companyAndres.startWork();
 }}
