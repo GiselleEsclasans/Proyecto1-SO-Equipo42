@@ -33,7 +33,8 @@ public class Company {
     private float earning = 0;
     private float profit = 0;
     
-    private int days = 0;
+    private int days = 0; 
+    private int daysLeft;
   
     
     private int computerCount;
