@@ -24,6 +24,7 @@ public class Company {
     private int dayCount;
     private ProjectManager projectManager;
     private Director director;
+    private int daysLeft;
   
     private static Storage storage;
     private Semaphore mutex;
@@ -33,7 +34,6 @@ public class Company {
     private float profit = 0;
     
     private int days = 0; 
-    private int daysLeft;
   
     
     private int computerCount;

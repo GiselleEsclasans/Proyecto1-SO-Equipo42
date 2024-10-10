@@ -43,11 +43,16 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         HP = new javax.swing.JButton();
-        HP1 = new javax.swing.JButton();
+        AppleButton = new javax.swing.JButton();
+        DataTxtAppleButton = new javax.swing.JButton();
+        DataTxtHPButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HP.setText("Ir a HP");
         HP.addActionListener(new java.awt.event.ActionListener() {
@@ -55,15 +60,33 @@ public class Inicio extends javax.swing.JFrame {
                 HPActionPerformed(evt);
             }
         });
-        getContentPane().add(HP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        jPanel1.add(HP, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 90, -1));
 
-        HP1.setText("Ir a Apple");
-        HP1.addActionListener(new java.awt.event.ActionListener() {
+        AppleButton.setText("Ir a Apple");
+        AppleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HP1ActionPerformed(evt);
+                AppleButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(HP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+        jPanel1.add(AppleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+
+        DataTxtAppleButton.setText("Cambiar Data Apple TXT");
+        DataTxtAppleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataTxtAppleButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DataTxtAppleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        DataTxtHPButton.setText("Cambiar Data HP TXT");
+        DataTxtHPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataTxtHPButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(DataTxtHPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, 400, 200));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -73,11 +96,23 @@ public class Inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_HPActionPerformed
 
-    private void HP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HP1ActionPerformed
+    private void AppleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppleButtonActionPerformed
        DashboardApple dApple = new DashboardApple(hp, apple);
        this.dispose();
+       
+    }//GEN-LAST:event_AppleButtonActionPerformed
 
-    }//GEN-LAST:event_HP1ActionPerformed
+    private void DataTxtAppleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataTxtAppleButtonActionPerformed
+        // TODO add your handling code here:
+        TxtDataApple txtDataApple = new TxtDataApple(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_DataTxtAppleButtonActionPerformed
+
+    private void DataTxtHPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataTxtHPButtonActionPerformed
+        // TODO add your handling code here:
+        TxtDataHP txtDataHP = new TxtDataHP(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_DataTxtHPButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,7 +150,10 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AppleButton;
+    private javax.swing.JButton DataTxtAppleButton;
+    private javax.swing.JButton DataTxtHPButton;
     private javax.swing.JButton HP;
-    private javax.swing.JButton HP1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
