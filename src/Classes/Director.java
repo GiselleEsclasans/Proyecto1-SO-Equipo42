@@ -18,6 +18,7 @@ public class Director extends Thread {
     private int dayDuration;
     private int totalDays;
 
+
     public Director(String company, Semaphore m, ProjectManager pm) {
         this.company = company;
         this.mutex = m;
@@ -25,6 +26,14 @@ public class Director extends Thread {
         this.totalSalary = 0;
         this.dayDuration = Data.dayDuration;
         this.totalDays = Data.totalDays;
+// =======
+// public class Director extends Employee {
+//     private String status;
+    
+//     public Director(Company company, int id, int type, int days, int workDone, int salary, Storage WorkStorage, Semaphore m) {
+//         super(company, id, type, days, workDone, WorkStorage, m);
+//         this.status = "";
+// >>>>>>> main
     }
 
     @Override

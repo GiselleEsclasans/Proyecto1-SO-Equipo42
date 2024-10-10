@@ -31,6 +31,7 @@ public class ProjectManager extends Thread {
     public void run() {
         while (daysLeft > 0) { // Mientras queden días para la entrega
             try {
+// <<<<<<< AndresImery
                 // Las primeras 16 horas del día
                 for (int t = 0; t < 16; t += 0.5) { // Cada hora representa 0.5 en 30 minutos
                     watchingAnime = true; // Está viendo anime
@@ -50,6 +51,30 @@ public class ProjectManager extends Thread {
                 daysLeft--; // Reduce el contador de días
                 System.out.println(this.company + " Días restantes para entregar las computadoras: " + daysLeft);
 
+// =======
+//                 // Ciclo de ver anime y revisar el proyecto (animeTime en total)
+//                 for (int t = 0; t < animeTime / (2 * halfCycle); t++) {
+//                     // Ver anime por halfCycle
+//                     //System.out.println(this.company + " Project Manager viendo anime...");
+//                     this.earnSalary();
+//                     sleep(halfCycle); // Duerme el tiempo de ver anime
+
+//                     // Revisar el proyecto por halfCycle
+//                     //System.out.println(this.company + " Project Manager revisando proyecto...");
+//                     this.earnSalary();
+//                     sleep(halfCycle); // Duerme el tiempo de revisión
+//                 }
+
+//                 // Ciclo de trabajar durante workTime
+//                 for (int t = 0; t < workTime / 1000; t++) {
+//                     //System.out.println(this.company + " Project Manager trabajando en el proyecto...");
+//                     this.earnSalary();
+//                     sleep(1000); // Simula cada "hora" de trabajo
+//                 }
+
+//                 // Un día de trabajo ha pasado
+//                 //System.out.println(this.company + " Project Manager ha completado un día de trabajo simulado.");
+// >>>>>>> main
             } catch (InterruptedException ex) {
                 Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -62,7 +87,7 @@ public class ProjectManager extends Thread {
     // Método para acumular salario
     public void earnSalary() {
         this.totalSalary += salary; // $40 por cada "hora" simulada
-        System.out.println(this.company + " Project Manager ha ganado: " + this.totalSalary + "$");
+        //System.out.println(this.company + " Project Manager ha ganado: " + this.totalSalary + "$");
     }
 
     // Getters y setters

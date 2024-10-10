@@ -5,6 +5,9 @@
 package Classes;
 
 import DataStructure.Data;
+import Interfaces.DashboardHP;
+import Interfaces.DashboardApple;
+import Main.App;
 import java.util.concurrent.Semaphore;
 
 public class Company {
@@ -16,9 +19,14 @@ public class Company {
     private ProjectManager projectManager;
     private Director director;
     private Semaphore mutex;
-    private int daysLeft;
 
+    private int daysLeft;
+    private int computerCount;
+    private int graphicComputerCount;
+    private int assemblerCount;
+  
     public Company(String company, int totalEmployees, int daysLeft) {
+
         this.company = company;
         this.totalEmployees = totalEmployees;
         this.employees = new Employee[totalEmployees];
@@ -26,13 +34,19 @@ public class Company {
         this.mutex = new Semaphore(1);
         this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
 
+
+        
         // Inicializar los almacenes con capacidades fijas
         for (int i = 0; i < 5; i++) {
-            Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i]);
+            Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i], this);
+            storage.getCapacity();
+
             this.storages[i] = storage;
         }
 
         this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration, this.daysLeft);
+        this.computerCount = 0;
+        this.graphicComputerCount = 0;
         
         this.director = new Director(this.company, this.mutex, this.projectManager);
 
@@ -40,25 +54,26 @@ public class Company {
 
     public void distributeEmployees() {
         // Distribuir el total de empleados de la compañía entre los 5 tipos de trabajadores y los ensambladores de las computadoras
-        int[] employeeCounts = new int[5]; // Contadores de empleados por tipo
+        int[] employeeCounts = new int[6]; // Contadores de empleados por tipo
 
         // Asignar un trabajador de cada tipo como mínimo
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             employeeCounts[i] = 1;
         }
 
         // Distribuir los empleados restantes
-        int remainingEmployees = this.totalEmployees - 5;
+        int remainingEmployees = this.totalEmployees - 6;
         for (int i = 0; i < remainingEmployees; i++) {
-            int type = (int) (Math.random() * 5);
+            int type = (int) (Math.random() * 6);
             employeeCounts[type]++;
         }
 
         // Crear los empleados
         int employeeIndex = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
+            Storage storage = (i < 5) ? this.storages[i] : null;
             for (int j = 0; j < employeeCounts[i]; j++) {
-                Employee employee = new Employee(this.company, employeeIndex, i, 0, 0, this.storages[i], new Semaphore(1));
+                Employee employee = new Employee(this, employeeIndex, i, 0, 0, storage, new Semaphore(1));
                 this.employees[employeeIndex] = employee;
                 employeeIndex++;
             }
@@ -66,10 +81,11 @@ public class Company {
     }
 
     public void startWork() {
+       
         for (Employee employee : employees) {
             employee.start();
         }
-
+        
         this.projectManager.start();
         this.director.start();
         System.out.println("Project started for " + this.company);
@@ -79,6 +95,51 @@ public class Company {
         this.daysLeft = days; // Actualiza los días restantes
         this.projectManager.setDaysLeft(days); // Sincroniza el Project Manager con los nuevos días
     }
+
+
+    
+    public void incrementComputerCount() {
+    this.computerCount++;
+    System.out.println("\n\n" + this.company + " Computadoras normales " + this.computerCount + "\n");
+    // Update the dashboard
+   
+}   
+
+public void incrementGraphicComputerCount() {
+    this.graphicComputerCount++;
+    System.out.println("\n\n" + this.company + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
+    // Update the dashboard
+   
+}
+    
+    public void incrementAssemblerCount() {
+        this.assemblerCount++;
+       
+    }
+  
+    
+  
+  
+  
+    
+    public int getComputerCount() {
+        return this.computerCount;
+    }
+    
+       public String getCompany() {
+        return company;
+    }
+       
+       public void setComputerCount(int count) {
+        computerCount = count;
+    }
+    
+    
+    
+    
+  
+
+
 
     public Employee[] getEmployees() {
         return employees;
@@ -109,4 +170,27 @@ public class Company {
             System.out.println("Tipo " + i + ": " + employeeCounts[i] + " empleados");
         }
     }
+
+    /**
+     * @return the graphicComputerCount
+     */
+    public int getGraphicComputerCount() {
+        return graphicComputerCount;
+    }
+
+    /**
+     * @return the assemblerCount
+     */
+    public int getAssemblerCount() {
+        return assemblerCount;
+    }
+
+    /**
+     * @param assemblerCount the assemblerCount to set
+     */
+    public void setAssemblerCount(int assemblerCount) {
+        this.assemblerCount = assemblerCount;
+    }
+    
 }
+
