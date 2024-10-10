@@ -25,6 +25,7 @@ public class Company {
     private int dayCount;
     private ProjectManager projectManager;
     private Director director;
+    private int daysLeft;
   
     private static Storage storage;
     private Semaphore mutex;

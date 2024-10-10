@@ -59,5 +59,6 @@ public class Data {
         35, // Productores de Fuente de alimentación
         10  // Productores de tarjetas gráficas
     };
+    public static int[] workerCounts = new int[5];
 }
 
