@@ -5,10 +5,10 @@
 package Classes;
 
 import DataStructure.Data;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import Interfaces.DashboardHP;
+import Interfaces.DashboardApple;
+import Main.App;
 import java.util.concurrent.Semaphore;
-import javax.swing.Timer;
 
 
 /**
@@ -28,13 +28,20 @@ public class Company {
     private int graphicComputerCount;
     private int assemblerCount;
     
+    
+   
+    
+    
     public Company(String company, int totalEmployees) {
         this.company = company;
         this.totalEmployees = totalEmployees;
         this.employees = new Employee[totalEmployees];
         this.storages = new Storage[5]; // 5 tipos de trabajadores
         this.mutex = new Semaphore(1);
+        
+       
 
+        
         // Inicializar los almacenes con capacidades fijas
         for (int i = 0; i < 5; i++) {
             Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i], this);
@@ -78,29 +85,37 @@ public class Company {
     
     
     public void startWork() {
+       
         for (Employee employee : employees) {
             employee.start();
         }
-
+        
         this.projectManager.start();
         //System.out.println("here");
     }
 
     
     public void incrementComputerCount() {
-        this.computerCount++;
-        System.out.println("\n\n"+this.company + "Computadoras normales"+this.computerCount+ "\n");
-    }
-    
-    public void incrementGraphicComputerCount() {
-        this.graphicComputerCount++;
-        System.out.println("\n\n" + this.company + " Computadoras con gráficas "+this.getGraphicComputerCount() + "\n");
-    }
+    this.computerCount++;
+    System.out.println("\n\n" + this.company + " Computadoras normales " + this.computerCount + "\n");
+    // Update the dashboard
+   
+}   
+
+public void incrementGraphicComputerCount() {
+    this.graphicComputerCount++;
+    System.out.println("\n\n" + this.company + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
+    // Update the dashboard
+   
+}
     
     public void incrementAssemblerCount() {
         this.assemblerCount++;
        
     }
+  
+    
+  
   
   
     
@@ -110,6 +125,10 @@ public class Company {
     
        public String getCompany() {
         return company;
+    }
+       
+       public void setComputerCount(int count) {
+        computerCount = count;
     }
     
     

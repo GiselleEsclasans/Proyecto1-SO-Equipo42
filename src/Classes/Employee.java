@@ -138,11 +138,6 @@ public class Employee extends Thread {
     
     if (allComponentsAvailable) {      
         //System.out.println(this.companyName+"Ensamblando...");
-    
-        for (int i = 0; i < componentsNeeded.length; i++) {
-            storages[i].addToStorage(-componentsNeeded[i], storages[i]);
-        }
-        
         // Verificar si se debe agregar tarjeta gráfica a la computadora
         int graphicCardPolicy = Data.graphicCard[this.companyName == "HP" ? 0 : 1][0];
         int graphicCardCount = Data.graphicCard[this.companyName == "HP" ? 0 : 1][1];
@@ -156,6 +151,9 @@ public class Employee extends Thread {
             this.company.incrementGraphicComputerCount(); 
             
         } else {
+            for (int i = 0; i < componentsNeeded.length; i++) {
+            storages[i].addToStorage(-componentsNeeded[i], storages[i]);
+        }
             this.company.incrementComputerCount();
             this.company.incrementAssemblerCount();
           
@@ -168,6 +166,10 @@ public class Employee extends Thread {
             //System.out.println(this.companyName+"No hay suficientes componentes.");
             return;
         }
+    
+        
+        
+        
     
    
     
