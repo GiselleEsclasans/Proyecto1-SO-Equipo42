@@ -26,7 +26,7 @@ public class Storage {
         if (storage.getCurrentCapacity() + type <= storage.capacity) {
             //System.out.println("Ha creado " + type + " tipos de: " + storage.productType);
             this.currentCapacity = this.getCurrentCapacity() + type;
-            System.out.println(this.company.getCompany() +" "+storage.productType + "Drive tiene: " + this.getCurrentCapacity() + " de " + this.capacity);
+            //System.out.println(this.company.getCompany() +" "+storage.productType + "Drive tiene: " + this.getCurrentCapacity() + " de " + this.capacity);
         } else {
             //System.out.println("Almacen lleno");
         }

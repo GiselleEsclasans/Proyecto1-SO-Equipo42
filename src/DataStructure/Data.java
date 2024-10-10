@@ -9,7 +9,7 @@ package DataStructure;
  * @author gigie
  */
 public class Data {
-    public static int dayDuration = 5000;                        //5 segundos de duración
+    public static int dayDuration = 2000;                        //5 segundos de duración
    
     
     public final static int[] salary = {

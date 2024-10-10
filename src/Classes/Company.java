@@ -25,9 +25,9 @@ public class Company {
     private Semaphore mutex;
     
     private int computerCount;
-    private int graphicCardPolicy;
-    private int graphicCardCount;
-
+    private int graphicComputerCount;
+    private int assemblerCount;
+    
     public Company(String company, int totalEmployees) {
         this.company = company;
         this.totalEmployees = totalEmployees;
@@ -45,6 +45,7 @@ public class Company {
         
         this.projectManager = new ProjectManager(this.getCompany(), this.mutex, Data.dayDuration);
         this.computerCount = 0;
+        this.graphicComputerCount = 0;
     }
 
     public void distributeEmployees() {
@@ -88,16 +89,20 @@ public class Company {
     
     public void incrementComputerCount() {
         this.computerCount++;
-        this.graphicCardCount++;
-        if (this.graphicCardCount >= this.graphicCardPolicy) {
-            this.graphicCardCount = 0;
-            this.createComputerWithGraphicCard();
-        }
+        System.out.println("\n\n"+this.company + "Computadoras normales"+this.computerCount+ "\n");
     }
     
-    private void createComputerWithGraphicCard() {
-        System.out.println(this.company + " Creando computadora con tarjeta gráfica...");      
+    public void incrementGraphicComputerCount() {
+        this.graphicComputerCount++;
+        System.out.println("\n\n" + this.company + " Computadoras con gráficas "+this.getGraphicComputerCount() + "\n");
     }
+    
+    public void incrementAssemblerCount() {
+        this.assemblerCount++;
+       
+    }
+  
+  
     
     public int getComputerCount() {
         return this.computerCount;
@@ -106,8 +111,6 @@ public class Company {
        public String getCompany() {
         return company;
     }
-    
-    
     
     
     
@@ -140,6 +143,27 @@ public class Company {
         for (int i = 0; i < 5; i++) {
             System.out.println("Tipo " + i + ": " + employeeCounts[i] + " empleados");
         }
+    }
+
+    /**
+     * @return the graphicComputerCount
+     */
+    public int getGraphicComputerCount() {
+        return graphicComputerCount;
+    }
+
+    /**
+     * @return the assemblerCount
+     */
+    public int getAssemblerCount() {
+        return assemblerCount;
+    }
+
+    /**
+     * @param assemblerCount the assemblerCount to set
+     */
+    public void setAssemblerCount(int assemblerCount) {
+        this.assemblerCount = assemblerCount;
     }
     
 }
