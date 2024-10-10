@@ -182,7 +182,7 @@ public class DashboardApple extends javax.swing.JFrame {
       this.dispose();
     }//GEN-LAST:event_HPActionPerformed
 
-    
+  
     
     /**
      * @param args the command line arguments

@@ -18,11 +18,27 @@ import java.util.concurrent.Semaphore;
 public class Company {
     private String company;
     private int totalEmployees;
+    private int actualEmployees;
     private Employee[] employees;
+    private Employee[] ePlacaBase;
+    private Employee[] eCPU;
+    private Employee[] eRAM;
+    private Employee[] eFA;
+    private Employee[] eTG;
+    private Employee[] assemblers;
     private Storage[] storages;
     private int dayCount;
     private ProjectManager projectManager;
+    private Director director;
+    private static Storage storage;
     private Semaphore mutex;
+    
+    private float cost = 0;
+    private float earning = 0;
+    private float profit = 0;
+    
+    private int days = 0;
+    
     
     private int computerCount;
     private int graphicComputerCount;
