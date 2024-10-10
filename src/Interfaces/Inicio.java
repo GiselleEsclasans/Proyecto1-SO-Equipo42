@@ -16,6 +16,16 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    public Inicio(Company c){
+        if (c.getCompany() == "APPLE"){
+            this.apple = c;
+        } else {
+            this.hp = c;
+        
+        }
+    }
+    
+    
     public Inicio(Company hp, Company apple) {
         this.hp = hp;
         this.apple = apple;

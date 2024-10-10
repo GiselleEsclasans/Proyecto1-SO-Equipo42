@@ -5,9 +5,8 @@
 package Classes;
 
 import DataStructure.Data;
-import Interfaces.DashboardHP;
 import Interfaces.DashboardApple;
-import Main.App;
+import Interfaces.DashboardHP;
 import java.util.concurrent.Semaphore;
 
 public class Company {
@@ -44,6 +43,9 @@ public class Company {
     private int totalComputers;
     private int totalGraphipComputers;
     
+    DashboardApple dApple;
+    DashboardHP dHP;
+    
 
   
     public Company(String company, int totalEmployees, int daysLeft) {
@@ -59,7 +61,11 @@ public class Company {
 
         this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
 
-
+        if (company.equals("APPLE")) {
+        this.dApple = new DashboardApple(this, null);
+        } else if (company.equals("HP")) {
+            this.dHP = new DashboardHP(this, null);
+        }
 
         
         // Inicializar los almacenes con capacidades fijas
@@ -125,14 +131,14 @@ public class Company {
     public void incrementComputerCount() {
     this.computerCount++;
     System.out.println("\n\n" + this.company + " Computadoras normales " + this.computerCount + "\n");
-    // Update the dashboard
+    this.updateDashboard();
    
 }   
 
 public void incrementGraphicComputerCount() {
     this.graphicComputerCount++;
     System.out.println("\n\n" + this.company + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
-    // Update the dashboard
+    this.updateDashboard();
    
 }
     
@@ -140,6 +146,21 @@ public void incrementGraphicComputerCount() {
         this.assemblerCount++;
        
     }
+    
+    
+    public void updateDashboard() {
+    if (this.company.equals("APPLE")) {
+        if (dApple != null) {
+            dApple.updateComputerCount(this.getComputerCount());
+            dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
+        }
+    } else {
+        if (dHP != null) {
+            dHP.updateComputerCount(this.getComputerCount());
+            dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
+        }
+    }
+}
   
     
   

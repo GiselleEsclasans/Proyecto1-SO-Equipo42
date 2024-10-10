@@ -35,21 +35,21 @@ public class ProjectManager extends Thread {
                 // Las primeras 16 horas del día
                 for (int t = 0; t < 16; t += 0.5) { // Cada hora representa 0.5 en 30 minutos
                     watchingAnime = true; // Está viendo anime
-                    System.out.println(this.company + " Project Manager viendo anime...");
+                    //System.out.println(this.company + " Project Manager viendo anime...");
                     earnSalary(); // Gana salario mientras ve anime
                     sleep(dayDuration / 48); // Simula 30 minutos
 
                     watchingAnime = false; // Ahora trabaja
-                    System.out.println(this.company + " Project Manager revisando proyecto...");
+                    //System.out.println(this.company + " Project Manager revisando proyecto...");
                     earnSalary(); // Gana salario mientras trabaja
                     sleep(dayDuration / 48); // Simula 30 minutos
                 }
 
                 // Últimas 8 horas del día
-                System.out.println(this.company + " Project Manager actualizando días restantes...");
+                //System.out.println(this.company + " Project Manager actualizando días restantes...");
                 sleep(dayDuration / 24 * 8); // Simula 8 horas
                 daysLeft--; // Reduce el contador de días
-                System.out.println(this.company + " Días restantes para entregar las computadoras: " + daysLeft);
+                //System.out.println(this.company + " Días restantes para entregar las computadoras: " + daysLeft);
 
 // =======
 //                 // Ciclo de ver anime y revisar el proyecto (animeTime en total)
@@ -81,7 +81,7 @@ public class ProjectManager extends Thread {
         }
 
         // Cuando no queden más días
-        System.out.println(this.company + " Project Manager ha terminado el proyecto. No quedan días restantes.");
+        //System.out.println(this.company + " Project Manager ha terminado el proyecto. No quedan días restantes.");
     }
 
     // Método para acumular salario
@@ -97,14 +97,14 @@ public class ProjectManager extends Thread {
 
     public void setDaysLeft(int daysLeft) {
         this.daysLeft = daysLeft;
-        System.out.println("Días restantes actualizados en Project Manager: " + this.daysLeft);
+        //System.out.println("Días restantes actualizados en Project Manager: " + this.daysLeft);
     }
 
     public void deductSalary(int amount) {
         try {
             mutex.acquire(); // Adquiere el semáforo antes de modificar el salario
             this.totalSalary -= amount; // Descuenta el salario
-            System.out.println(this.company + " Project Manager ha tenido un descuento de $ " + amount);
+            //System.out.println(this.company + " Project Manager ha tenido un descuento de $ " + amount);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
