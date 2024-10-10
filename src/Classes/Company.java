@@ -109,7 +109,8 @@ public class Company {
             }
         }
     }
-
+    
+    
     public void startWork() {
        
         for (Employee employee : employees) {
@@ -153,11 +154,13 @@ public void incrementGraphicComputerCount() {
         if (dApple != null) {
             dApple.updateComputerCount(this.getComputerCount());
             dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
+         
         }
     } else {
         if (dHP != null) {
             dHP.updateComputerCount(this.getComputerCount());
             dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
+       
         }
     }
 }
@@ -186,12 +189,13 @@ public void incrementGraphicComputerCount() {
 
 
 
-    public Employee[] getEmployees() {
-        return employees;
+   
+    public Storage[] getStorages() {
+        return this.storages;
     }
 
-    public Storage[] getStorages() {
-        return storages;
+    public Employee[] getEmployees() {
+        return this.employees;
     }
     
     public ProjectManager getProjectManager() {

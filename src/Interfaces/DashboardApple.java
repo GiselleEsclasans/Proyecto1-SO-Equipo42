@@ -5,6 +5,9 @@
 package Interfaces;
 
 import Classes.Company;
+import Classes.Employee;
+import Classes.Storage;
+import DataStructure.Data;
 
 /**
  *
@@ -38,6 +41,41 @@ public class DashboardApple extends javax.swing.JFrame {
         cG.setText(String.valueOf(count));
     }
     
+    public void updateStorageCapacity(Storage[] storages) {
+        for (int i = 0; i < storages.length; i++) {
+            String storageType = Data.producerTypes[i];
+            int currentCapacity = storages[i].getCurrentCapacity();
+            int maxCapacity = storages[i].getCapacity();
+            // Actualizar la interfaz gráfica con la información correspondiente
+            // Por ejemplo:
+            if (i == 0) {
+                aPB.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 1) {
+                aCPU.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 2) {
+                aRAM.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 3) {
+                aFA.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 4) {
+                aTG.setText(currentCapacity + " / " + maxCapacity);
+            }
+        }
+    }
+
+    public void updateWorkerCount(Employee[] employees) {
+        int[] workerCounts = new int[6];
+        for (Employee employee : employees) {
+            workerCounts[employee.getType()]++;
+        }
+        // Actualizar la interfaz gráfica con la información correspondiente
+        // Por ejemplo:
+        ePB.setText(String.valueOf(workerCounts[0]));
+        eCPU.setText(String.valueOf(workerCounts[1]));
+        eRAM.setText(String.valueOf(workerCounts[2]));
+        eFA.setText(String.valueOf(workerCounts[3]));
+        eTG.setText(String.valueOf(workerCounts[4]));
+        aPB.setText(String.valueOf(workerCounts[5]));
+    }
     
     
     
