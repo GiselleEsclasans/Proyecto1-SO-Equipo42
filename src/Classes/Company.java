@@ -38,11 +38,14 @@ public class Company {
     private float profit = 0;
     
     private int days = 0;
-    
+    private int deadline = 0;
     
     private int computerCount;
     private int graphicComputerCount;
     private int assemblerCount;
+    
+    private int totalComputers;
+    private int totalGraphipComputers;
     
     
    
@@ -55,7 +58,8 @@ public class Company {
         this.storages = new Storage[5]; // 5 tipos de trabajadores
         this.mutex = new Semaphore(1);
         
-       
+        this.computerCount = 0;
+        this.graphicComputerCount = 0;
 
         
         // Inicializar los almacenes con capacidades fijas
@@ -67,8 +71,7 @@ public class Company {
         }
         
         this.projectManager = new ProjectManager(this.getCompany(), this.mutex, Data.dayDuration);
-        this.computerCount = 0;
-        this.graphicComputerCount = 0;
+      
     }
 
     public void distributeEmployees() {
