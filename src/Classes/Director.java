@@ -60,18 +60,18 @@ public class Director extends Thread {
     }
 
     private void sendComputers() {
-        System.out.println(company + " Director enviando computadoras a distribuidoras...");
+        //System.out.println(company + " Director enviando computadoras a distribuidoras...");
         try {
             sleep(this.dayDuration); // Simula 24 horas en milisegundos
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(company + " Director ha enviado las computadoras.");
+        //System.out.println(company + " Director ha enviado las computadoras.");
         projectManager.setDaysLeft(totalDays); // Reinicia el contador (ejemplo)
     }
 
     private void doAdministrativeWork() {
-        System.out.println(company + " Director realizando labores administrativas...");
+        //System.out.println(company + " Director realizando labores administrativas...");
         try {
             sleep(this.dayDuration); // Simula el tiempo de trabajo administrativo
         } catch (InterruptedException e) {
@@ -80,15 +80,15 @@ public class Director extends Thread {
     }
 
     private void reviewProjectManager() {
-        System.out.println(company + " Director revisando el trabajo del Project Manager...");
+        //System.out.println(company + " Director revisando el trabajo del Project Manager...");
 
         if (projectManager.isWatchingAnime()) {
-            System.out.println(company + " Director descubrió al Project Manager viendo anime!");
+            //System.out.println(company + " Director descubrió al Project Manager viendo anime!");
             // Cambiado para utilizar correctamente la referencia a projectManager
             projectManager.deductSalary(100); // Descuenta $100 si está viendo anime
             System.out.println("################################################################################################");
         } else {
-            System.out.println(company + " Project Manager está trabajando.");
+            //System.out.println(company + " Project Manager está trabajando.");
         }
     }
 
