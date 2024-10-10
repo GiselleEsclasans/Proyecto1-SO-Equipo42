@@ -10,11 +10,6 @@ import Interfaces.DashboardApple;
 import Main.App;
 import java.util.concurrent.Semaphore;
 
-
-/**
- *
- * @author gigie
- */
 public class Company {
     private String company;
     private int totalEmployees;
@@ -30,6 +25,7 @@ public class Company {
     private int dayCount;
     private ProjectManager projectManager;
     private Director director;
+  
     private static Storage storage;
     private Semaphore mutex;
     
@@ -38,7 +34,7 @@ public class Company {
     private float profit = 0;
     
     private int days = 0;
-    private int deadline = 0;
+  
     
     private int computerCount;
     private int graphicComputerCount;
@@ -47,31 +43,36 @@ public class Company {
     private int totalComputers;
     private int totalGraphipComputers;
     
-    
-   
-    
-    
-    public Company(String company, int totalEmployees) {
+
+  
+    public Company(String company, int totalEmployees, int daysLeft) {
+
         this.company = company;
         this.totalEmployees = totalEmployees;
         this.employees = new Employee[totalEmployees];
         this.storages = new Storage[5]; // 5 tipos de trabajadores
         this.mutex = new Semaphore(1);
-        
+
         this.computerCount = 0;
         this.graphicComputerCount = 0;
+
+        this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
+
+
 
         
         // Inicializar los almacenes con capacidades fijas
         for (int i = 0; i < 5; i++) {
             Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i], this);
             storage.getCapacity();
+
             this.storages[i] = storage;
-            
         }
-        
-        this.projectManager = new ProjectManager(this.getCompany(), this.mutex, Data.dayDuration);
-      
+
+
+        this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration, this.daysLeft);
+        this.director = new Director(this.company, this.mutex, this.projectManager);
+
     }
 
     public void distributeEmployees() {
@@ -101,8 +102,7 @@ public class Company {
             }
         }
     }
-    
-    
+
     public void startWork() {
        
         for (Employee employee : employees) {
@@ -110,8 +110,15 @@ public class Company {
         }
         
         this.projectManager.start();
-        //System.out.println("here");
+        this.director.start();
+        System.out.println("Project started for " + this.company);
     }
+
+    public void updateDaysLeft(int days) {
+        this.daysLeft = days; // Actualiza los días restantes
+        this.projectManager.setDaysLeft(days); // Sincroniza el Project Manager con los nuevos días
+    }
+
 
     
     public void incrementComputerCount() {
@@ -156,6 +163,7 @@ public void incrementGraphicComputerCount() {
   
 
 
+
     public Employee[] getEmployees() {
         return employees;
     }
@@ -167,8 +175,11 @@ public void incrementGraphicComputerCount() {
     public ProjectManager getProjectManager() {
         return projectManager;
     }
-    
-    
+
+    public int getDaysLeft() {
+        return daysLeft; // Getter para días restantes
+    }
+
     public void printEmployeeCounts() {
         int[] employeeCounts = new int[5]; // Contadores de empleados por tipo
 
@@ -205,3 +216,4 @@ public void incrementGraphicComputerCount() {
     }
     
 }
+

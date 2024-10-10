@@ -28,8 +28,8 @@ public class App {
     public static App getInstance() {
         if (instance == null) {
             instance = new App();
-            hp = new Company("HP", 20);
-            apple = new Company("APPLE", 15);
+            hp = new Company("HP", 20, 30);
+            apple = new Company("APPLE", 15, 30);
         }
         return instance;
     }
