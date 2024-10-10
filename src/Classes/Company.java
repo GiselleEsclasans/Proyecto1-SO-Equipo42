@@ -13,17 +13,37 @@ import java.util.concurrent.Semaphore;
 public class Company {
     private String company;
     private int totalEmployees;
+    private int actualEmployees;
     private Employee[] employees;
+    private Employee[] ePlacaBase;
+    private Employee[] eCPU;
+    private Employee[] eRAM;
+    private Employee[] eFA;
+    private Employee[] eTG;
+    private Employee[] assemblers;
     private Storage[] storages;
     private int dayCount;
     private ProjectManager projectManager;
     private Director director;
+  
+    private static Storage storage;
     private Semaphore mutex;
-
-    private int daysLeft;
+    
+    private float cost = 0;
+    private float earning = 0;
+    private float profit = 0;
+    
+    private int days = 0;
+  
+    
     private int computerCount;
     private int graphicComputerCount;
     private int assemblerCount;
+    
+    private int totalComputers;
+    private int totalGraphipComputers;
+    
+
   
     public Company(String company, int totalEmployees, int daysLeft) {
 
@@ -32,7 +52,12 @@ public class Company {
         this.employees = new Employee[totalEmployees];
         this.storages = new Storage[5]; // 5 tipos de trabajadores
         this.mutex = new Semaphore(1);
+
+        this.computerCount = 0;
+        this.graphicComputerCount = 0;
+
         this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
+
 
 
         
@@ -44,10 +69,8 @@ public class Company {
             this.storages[i] = storage;
         }
 
+
         this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration, this.daysLeft);
-        this.computerCount = 0;
-        this.graphicComputerCount = 0;
-        
         this.director = new Director(this.company, this.mutex, this.projectManager);
 
     }
