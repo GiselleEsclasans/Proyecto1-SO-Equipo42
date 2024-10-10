@@ -35,7 +35,6 @@ public class Company {
     private float profit = 0;
     
     private int days = 0; 
-    private int daysLeft;
   
     
     private int computerCount;
