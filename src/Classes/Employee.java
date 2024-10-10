@@ -16,14 +16,14 @@ import java.util.logging.Logger;
 
  
 public class Employee extends Thread {
-    private String company;                 //Compañía que pertenece
+    private String companyName;                 //Compañía que pertenece
     private int id;                 //Id del trabajador
     private int type;               //Tipo de trabajador
     private int days;               //Días en que termina su trabajo
     private int workDone;           //Numero de trabajos realizados
     private Storage WorkStorage;    //Almacen que pertenece
     private float work;             //Trabajo total realizado
-    
+    private Company company;
     
     private int salary;                     //Salario por hora
     private float totalSalary;                //Salario total acumulado
@@ -37,7 +37,8 @@ public class Employee extends Thread {
     private int productionRate; // Tasa de producción del trabajador
     private int productionInterval; // Intervalo de producción del trabajador
     
-    public Employee(String company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
+    public Employee(Company company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
+        this.companyName = company.getCompany();
         this.company = company;
         this.id = id;
         this.type = type;
@@ -51,14 +52,14 @@ public class Employee extends Thread {
 
      
         
-        if (this.company == "HP") {
+        if (this.companyName == "HP") {
             this.productionRate = Data.productionRates[0][this.type];
             this.productionInterval = Data.productionIntervals[0][this.type];
-        } else if (this.company == "APPLE") {
+        } else if (this.companyName == "APPLE") {
             this.productionRate = Data.productionRates[1][this.type];
             this.productionInterval = Data.productionIntervals[1][this.type];
         } else {
-        throw new IllegalArgumentException("Compañía desconocida: " + this.company);
+        throw new IllegalArgumentException("Compañía desconocida: " + this.companyName);
         }   
     }
 
@@ -72,9 +73,9 @@ public class Employee extends Thread {
                 // Trabajar durante un día
 
                 earnSalary();
-                System.out.println(this.company + " Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
+                //System.out.println(this.companyName + " Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
                 work();
-                // Dormir durante un día
+              
                 sleep(this.dayDuration);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,14 +94,19 @@ public class Employee extends Thread {
         if (this.productionInterval == 0) {
             try {
                 this.mutex.acquire();
-                this.WorkStorage.addToStorage(this.productionRate, this.WorkStorage);
-                if (this.company == "HP") {
-                    this.productionRate = Data.productionRates[0][this.type];
+                if (this.type == 5){
+                    assemblePC();
                     this.productionInterval = Data.productionIntervals[0][this.type];
                 } else {
-                    this.productionRate = Data.productionRates[1][this.type];
-                    this.productionInterval = Data.productionIntervals[1][this.type];
-                }  
+                    this.WorkStorage.addToStorage(this.productionRate, this.WorkStorage);
+                    if (this.companyName == "HP") {
+                        this.productionRate = Data.productionRates[0][this.type];
+                        this.productionInterval = Data.productionIntervals[0][this.type];
+                    } else {
+                        this.productionRate = Data.productionRates[1][this.type];
+                        this.productionInterval = Data.productionIntervals[1][this.type];
+                    }  
+                }
                
                 this.mutex.release();
             } catch (InterruptedException ex) {
@@ -109,6 +115,42 @@ public class Employee extends Thread {
         }
     }
 
+        
+        private void assemblePC() {
+    
+        
+    int[] componentsNeeded = Data.componentsAssembleComputer[this.companyName == "HP" ? 0 : 1];
+
+    Storage[] storages = this.company.getStorages(); 
+    int[] componentsAvailable = new int[componentsNeeded.length];
+    for (int i = 0; i < componentsNeeded.length; i++) {
+        componentsAvailable[i] = storages[i].getCurrentCapacity();
+    }
+
+  
+    boolean allComponentsAvailable = true;
+    for (int i = 0; i < componentsNeeded.length; i++) {
+        if (componentsAvailable[i] < componentsNeeded[i]) {
+            allComponentsAvailable = false;
+            break;
+        }
+    }
+
+    if (allComponentsAvailable) {
+       
+        System.out.println(this.companyName+"Ensamblando...");
+    
+        for (int i = 0; i < componentsNeeded.length; i++) {
+            storages[i].addToStorage(-componentsNeeded[i], storages[i]);
+        }
+      
+        System.out.println( this.companyName+" Computer realizada!");
+        this.company.incrementComputerCount(); 
+        System.out.println("Cantidad de computadoras realizadas: " + this.company.getComputerCount()+ "EN " + this.companyName);
+    } else {
+        System.out.println(this.companyName+"No hay suficientes componentes.");
+    }
+}   
         
         
         
@@ -124,17 +166,17 @@ public class Employee extends Thread {
     
     
     /**
-     * @return the company
+     * @return the companyName
      */
-    public String getCompany() {
-        return company;
+    public String getCompanyName() {
+        return companyName;
     }
 
     /**
-     * @param company the company to set
+     * @param companyName the companyName to set
      */
-    public void setCompany(String company) {
-        this.company = company;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
    
