@@ -10,10 +10,7 @@ package DataStructure;
  */
 public class Data {
     public static int dayDuration = 5000;                        //5 segundos de duración
-    
-    public final static String[] companies = {
-        "APPLE", "HP"
-    };
+   
     
     public final static int[] salary = {
         20, 26, 40, 16, 34, 50, 40, 60  
@@ -45,11 +42,11 @@ public class Data {
     };  
     
     public final static int[][] productionRates = {
-        {1, 1, 2, 3, 1},{1,1,1,5,1}                 //Hp  ---  Apple
+        {1, 1, 2, 3, 1, 1},{1,1,1,5,1, 1}                 //Hp  ---  Apple
     };
 
     public final static int[][] productionIntervals = {
-        {3, 3,1,1,3},{4,4,1,1,2}  
+        {3, 3,1,1,3, 2},{4,4,1,1,2, 2}  
         
     };
     
@@ -61,3 +58,4 @@ public class Data {
         10  // Productores de tarjetas gráficas
     };
 }
+

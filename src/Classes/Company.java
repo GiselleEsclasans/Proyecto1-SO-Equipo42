@@ -23,6 +23,10 @@ public class Company {
     private int dayCount;
     private ProjectManager projectManager;
     private Semaphore mutex;
+    
+    private int computerCount;
+    private int graphicCardPolicy;
+    private int graphicCardCount;
 
     public Company(String company, int totalEmployees) {
         this.company = company;
@@ -33,37 +37,38 @@ public class Company {
 
         // Inicializar los almacenes con capacidades fijas
         for (int i = 0; i < 5; i++) {
-            Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i]);
+            Storage storage = new Storage(Data.storageCapacities[i], Data.producerTypes[i], this);
             storage.getCapacity();
             this.storages[i] = storage;
             
         }
         
-        this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration);
-
+        this.projectManager = new ProjectManager(this.getCompany(), this.mutex, Data.dayDuration);
+        this.computerCount = 0;
     }
 
     public void distributeEmployees() {
         // Distribuir el total de empleados de la compañía entre los 5 tipos de trabajadores y los ensambladores de las computadoras
-        int[] employeeCounts = new int[5]; // Contadores de empleados por tipo
+        int[] employeeCounts = new int[6]; // Contadores de empleados por tipo
 
         // Asignar un trabajador de cada tipo como mínimo
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             employeeCounts[i] = 1;
         }
 
         // Distribuir los empleados restantes
-        int remainingEmployees = this.totalEmployees - 5;
+        int remainingEmployees = this.totalEmployees - 6;
         for (int i = 0; i < remainingEmployees; i++) {
-            int type = (int) (Math.random() * 5);
+            int type = (int) (Math.random() * 6);
             employeeCounts[type]++;
         }
 
         // Crear los empleados
         int employeeIndex = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
+            Storage storage = (i < 5) ? this.storages[i] : null;
             for (int j = 0; j < employeeCounts[i]; j++) {
-                Employee employee = new Employee(this.company, employeeIndex, i, 0, 0, this.storages[i], new Semaphore(1));
+                Employee employee = new Employee(this, employeeIndex, i, 0, 0, storage, new Semaphore(1));
                 this.employees[employeeIndex] = employee;
                 employeeIndex++;
             }
@@ -77,9 +82,36 @@ public class Company {
         }
 
         this.projectManager.start();
-        System.out.println("here");
+        //System.out.println("here");
     }
 
+    
+    public void incrementComputerCount() {
+        this.computerCount++;
+        this.graphicCardCount++;
+        if (this.graphicCardCount >= this.graphicCardPolicy) {
+            this.graphicCardCount = 0;
+            this.createComputerWithGraphicCard();
+        }
+    }
+    
+    private void createComputerWithGraphicCard() {
+        System.out.println(this.company + " Creando computadora con tarjeta gráfica...");      
+    }
+    
+    public int getComputerCount() {
+        return this.computerCount;
+    }
+    
+       public String getCompany() {
+        return company;
+    }
+    
+    
+    
+    
+    
+    
   
 
 

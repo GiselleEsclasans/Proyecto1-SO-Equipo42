@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class Director extends Employee {
     private String status;
     
-    public Director(String company, int id, int type, int days, int workDone, int salary, Storage WorkStorage, Semaphore m) {
+    public Director(Company company, int id, int type, int days, int workDone, int salary, Storage WorkStorage, Semaphore m) {
         super(company, id, type, days, workDone, WorkStorage, m);
         this.status = "";
     }
