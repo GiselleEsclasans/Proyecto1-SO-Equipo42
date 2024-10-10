@@ -33,9 +33,11 @@ public class Employee extends Thread {
     private float acc;
     
  
+    private boolean nextComputerWithGraphicCard = false;
     
     private int productionRate; // Tasa de producción del trabajador
     private int productionInterval; // Intervalo de producción del trabajador
+    
     
     public Employee(Company company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
         this.companyName = company.getCompany();
@@ -49,6 +51,7 @@ public class Employee extends Thread {
         this.mutex = m;
         this.salary = Data.salary[this.type];
         this.acc = 0;
+        
 
      
         
@@ -116,9 +119,7 @@ public class Employee extends Thread {
     }
 
         
-        private void assemblePC() {
-    
-        
+   private void assemblePC() {
     int[] componentsNeeded = Data.componentsAssembleComputer[this.companyName == "HP" ? 0 : 1];
 
     Storage[] storages = this.company.getStorages(); 
@@ -127,35 +128,54 @@ public class Employee extends Thread {
         componentsAvailable[i] = storages[i].getCurrentCapacity();
     }
 
-  
     boolean allComponentsAvailable = true;
     for (int i = 0; i < componentsNeeded.length; i++) {
-        if (componentsAvailable[i] < componentsNeeded[i]) {
+        if (componentsAvailable[i] < componentsNeeded[i] ) {
             allComponentsAvailable = false;
             break;
         }
     }
-
-    if (allComponentsAvailable) {
-       
-        System.out.println(this.companyName+"Ensamblando...");
+    
+    if (allComponentsAvailable) {      
+        //System.out.println(this.companyName+"Ensamblando...");
     
         for (int i = 0; i < componentsNeeded.length; i++) {
             storages[i].addToStorage(-componentsNeeded[i], storages[i]);
         }
-      
-        System.out.println( this.companyName+" Computer realizada!");
-        this.company.incrementComputerCount(); 
-        System.out.println("Cantidad de computadoras realizadas: " + this.company.getComputerCount()+ "EN " + this.companyName);
-    } else {
-        System.out.println(this.companyName+"No hay suficientes componentes.");
-    }
-}   
         
+        // Verificar si se debe agregar tarjeta gráfica a la computadora
+        int graphicCardPolicy = Data.graphicCard[this.companyName == "HP" ? 0 : 1][0];
+        int graphicCardCount = Data.graphicCard[this.companyName == "HP" ? 0 : 1][1];
         
+       
+        if (storages[4].getCurrentCapacity() >= graphicCardCount) {
+        if (this.company.getAssemblerCount() == graphicCardPolicy) {
+            // Agregar tarjeta gráfica a la computadora
+            this.company.setAssemblerCount(0);
+            storages[4].addToStorage(-graphicCardCount, storages[4]);
+            this.company.incrementGraphicComputerCount(); 
+            
+        } else {
+            this.company.incrementComputerCount();
+            this.company.incrementAssemblerCount();
+          
+        }}else {
+            // No hay suficientes tarjetas gráficas, no crear computadora con gráfica
+            allComponentsAvailable = false;
+        }
         
+        if (!allComponentsAvailable) {
+            //System.out.println(this.companyName+"No hay suficientes componentes.");
+            return;
+        }
+    
    
-
+    
+        //System.out.println( "\n"+this.companyName+" Computer realizada!"+"\n");
+    } else {
+        //System.out.println(this.companyName+"No hay suficientes componentes.");
+    }
+}
     
         
     
@@ -299,6 +319,8 @@ public class Employee extends Thread {
     public void setMutex(Semaphore mutex) {
         this.mutex = mutex;
     }
+
+  
     
     
     
