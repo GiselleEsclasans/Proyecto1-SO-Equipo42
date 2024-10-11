@@ -71,7 +71,7 @@ public class Director extends Thread {
     }
 
     private void doAdministrativeWork() {
-        //System.out.println(company + " Director realizando labores administrativas...");
+        System.out.println(company + " Director realizando labores administrativas...");
         try {
             sleep(this.getDayDuration()); // Simula el tiempo de trabajo administrativo
         } catch (InterruptedException e) {
@@ -80,10 +80,10 @@ public class Director extends Thread {
     }
 
     private void reviewProjectManager() {
-        //System.out.println(company + " Director revisando el trabajo del Project Manager...");
+        System.out.println(company + " Director revisando el trabajo del Project Manager...");
 
         if (getProjectManager().isWatchingAnime()) {
-            //System.out.println(company + " Director descubrió al Project Manager viendo anime!");
+            System.out.println(company + " Director descubrió al Project Manager viendo anime!");
             // Cambiado para utilizar correctamente la referencia a projectManager
             getProjectManager().deductSalary(100); // Descuenta $100 si está viendo anime
             System.out.println("################################################################################################");
