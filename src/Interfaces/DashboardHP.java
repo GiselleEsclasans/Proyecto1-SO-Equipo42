@@ -181,7 +181,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         NodeComputadoras.setText("Computador con tarjeta gráfica:");
-        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 20));
+        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 190, 20));
 
         jLabel2.setText("Placa Base");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
@@ -199,7 +199,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jLabel7.setText("Costos");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
 
         jLabel9.setText("Máximo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 50, -1));
@@ -208,16 +208,16 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(Cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 90, -1));
 
         cG.setText("0");
-        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
+        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 100, -1));
 
         eRAM.setText("1");
-        getContentPane().add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 10, -1));
+        getContentPane().add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 10, -1));
 
         eFA.setText("1");
-        getContentPane().add(eFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 10, -1));
+        getContentPane().add(eFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 10, -1));
 
         PenaljLabel.setText("0");
-        getContentPane().add(PenaljLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
+        getContentPane().add(PenaljLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 220, -1));
 
         PlacaBasejLabel.setText("0 / 25");
         getContentPane().add(PlacaBasejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
@@ -226,19 +226,19 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(FuenteAlimjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
 
         NodeComputadoras1.setText("Computador Estándar:");
-        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
+        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 120, 20));
 
         RAMjLabel.setText("0 / 55");
         getContentPane().add(RAMjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
 
         cE.setText("0");
-        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
+        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 100, -1));
 
         jLabel20.setText("Director");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
         eE.setText("1");
-        getContentPane().add(eE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
+        getContentPane().add(eE, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 10, -1));
 
         TarjetasGraficasjLabel.setText("0 / 10");
         getContentPane().add(TarjetasGraficasjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
@@ -253,7 +253,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         eCPU.setText("1");
-        getContentPane().add(eCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 10, -1));
+        getContentPane().add(eCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 10, -1));
 
         HP.setText("Ir a Apple");
         HP.addActionListener(new java.awt.event.ActionListener() {
@@ -269,7 +269,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 iFAActionPerformed(evt);
             }
         });
-        getContentPane().add(iFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        getContentPane().add(iFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         iPB.setText("+");
         iPB.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +277,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 iPBActionPerformed(evt);
             }
         });
-        getContentPane().add(iPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        getContentPane().add(iPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
 
         iRAM.setText("+");
         iRAM.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +285,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 iRAMActionPerformed(evt);
             }
         });
-        getContentPane().add(iRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        getContentPane().add(iRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         iE.setText("+");
         iE.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +293,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 iEActionPerformed(evt);
             }
         });
-        getContentPane().add(iE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
+        getContentPane().add(iE, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         iCPU.setText("+");
         iCPU.addActionListener(new java.awt.event.ActionListener() {
@@ -301,10 +301,10 @@ public class DashboardHP extends javax.swing.JFrame {
                 iCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(iCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
+        getContentPane().add(iCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         eTG.setText("1");
-        getContentPane().add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 10, -1));
+        getContentPane().add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 10, -1));
 
         iTG.setText("+");
         iTG.addActionListener(new java.awt.event.ActionListener() {
@@ -312,7 +312,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 iTGActionPerformed(evt);
             }
         });
-        getContentPane().add(iTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        getContentPane().add(iTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
 
         dTG.setText("-");
         dTG.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +320,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dTGActionPerformed(evt);
             }
         });
-        getContentPane().add(dTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+        getContentPane().add(dTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
         dPB.setText("-");
         dPB.addActionListener(new java.awt.event.ActionListener() {
@@ -328,7 +328,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dPBActionPerformed(evt);
             }
         });
-        getContentPane().add(dPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+        getContentPane().add(dPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, -1, -1));
 
         dRAM.setText("-");
         dRAM.addActionListener(new java.awt.event.ActionListener() {
@@ -336,7 +336,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dRAMActionPerformed(evt);
             }
         });
-        getContentPane().add(dRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        getContentPane().add(dRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
         dE.setText("-");
         dE.addActionListener(new java.awt.event.ActionListener() {
@@ -344,7 +344,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dEActionPerformed(evt);
             }
         });
-        getContentPane().add(dE, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+        getContentPane().add(dE, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         dCPU.setText("-");
         dCPU.addActionListener(new java.awt.event.ActionListener() {
@@ -352,7 +352,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(dCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        getContentPane().add(dCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         CPUjLabel.setText("0 / 20");
         getContentPane().add(CPUjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
@@ -373,19 +373,19 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
         jLabel15.setText("Costos Operativos: ");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
 
         jLabel16.setText("Ganancias");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, -1, -1));
 
         jLabel17.setText("Ganancia Neta: ");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, -1, -1));
 
         jLabel18.setText("Ganancia Bruta: ");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
 
         ePB1.setText("1");
-        getContentPane().add(ePB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 20, -1));
+        getContentPane().add(ePB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 20, -1));
 
         EarningjLabel.setText("0");
         getContentPane().add(EarningjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 90, -1));
@@ -396,14 +396,14 @@ public class DashboardHP extends javax.swing.JFrame {
         mHP.setText("20");
         getContentPane().add(mHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
-        DirectorStatusjLabel.setText("\"estado\"");
-        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
+        DirectorStatusjLabel.setText("Iniciando");
+        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 370, -1));
 
-        PMStatusjLabel.setText("\"estado\"");
-        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 80, -1));
+        PMStatusjLabel.setText("Iniciando");
+        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 370, -1));
 
         FaultsjLabel.setText("0");
-        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 30, 20));
+        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 190, 20));
 
         dFA1.setText("-");
         dFA1.addActionListener(new java.awt.event.ActionListener() {
@@ -411,7 +411,7 @@ public class DashboardHP extends javax.swing.JFrame {
                 dFA1ActionPerformed(evt);
             }
         });
-        getContentPane().add(dFA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        getContentPane().add(dFA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
