@@ -5,20 +5,14 @@
 package Main;
 
 import Classes.Company;
-
-import Interfaces.DashboardApple;
-import Interfaces.DashboardHP;
 import Interfaces.Inicio;
-import java.io.File;
+
 
 /**
  *
  * @author gigie
  */
 public class App {
-    // FIle params
-  
-    
     private static App instance;
     public static Company hp;
     public static Company apple;

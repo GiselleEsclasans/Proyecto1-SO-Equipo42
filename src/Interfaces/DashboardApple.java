@@ -82,7 +82,7 @@ public class DashboardApple extends javax.swing.JFrame {
     }
     
     public void updateCostsSum(float sum) {
-        CostsjLabel.setText(String.valueOf(sum));
+        Costs.setText(String.valueOf(sum));
     }
     
     public void updateStorageCapacity(Storage[] storages) {
@@ -92,9 +92,7 @@ public class DashboardApple extends javax.swing.JFrame {
             int maxCapacity = storages[i].getCapacity();
             // Actualizar la interfaz gráfica con la información correspondiente
             // Por ejemplo:
-            if (i == 0) {
-                aPB.setText(currentCapacity + " / " + maxCapacity); // Placa Base
-            } else if (i == 1) {
+            if (i == 1) {
                 PlacaBasejLabel.setText(currentCapacity + " / " + maxCapacity); // CPU
             } else if (i == 2) {
                 FuenteAlimjLabel.setText(currentCapacity + " / " + maxCapacity); // Memorias RAM
@@ -113,11 +111,11 @@ public class DashboardApple extends javax.swing.JFrame {
         }
         // Actualizar la interfaz gráfica con la información correspondiente
         // Por ejemplo:
-        CostsjLabel.setText(String.valueOf(workerCounts[0]));
+      
         eCPU.setText(String.valueOf(workerCounts[1]));
         eRAM.setText(String.valueOf(workerCounts[2]));
         eFA.setText(String.valueOf(workerCounts[3]));
-        aPB.setText(String.valueOf(workerCounts[4]));
+        
         eE.setText(String.valueOf(workerCounts[5]));
         
         
@@ -146,12 +144,11 @@ public class DashboardApple extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        CostsjLabel = new javax.swing.JLabel();
+        Costs = new javax.swing.JLabel();
         cG = new javax.swing.JLabel();
         eRAM = new javax.swing.JLabel();
         eFA = new javax.swing.JLabel();
         mE = new javax.swing.JLabel();
-        aPB = new javax.swing.JLabel();
         PlacaBasejLabel = new javax.swing.JLabel();
         FuenteAlimjLabel = new javax.swing.JLabel();
         NodeComputadoras1 = new javax.swing.JLabel();
@@ -226,8 +223,8 @@ public class DashboardApple extends javax.swing.JFrame {
         jLabel9.setText("Máximo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 50, -1));
 
-        CostsjLabel.setText("0");
-        getContentPane().add(CostsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 80, -1));
+        Costs.setText("0");
+        getContentPane().add(Costs, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 80, -1));
 
         cG.setText("0");
         getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
@@ -240,9 +237,6 @@ public class DashboardApple extends javax.swing.JFrame {
 
         mE.setText("0");
         getContentPane().add(mE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
-
-        aPB.setText("0 / 0");
-        getContentPane().add(aPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 50, 20));
 
         PlacaBasejLabel.setText("0 / 25");
         getContentPane().add(PlacaBasejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
@@ -418,7 +412,7 @@ public class DashboardApple extends javax.swing.JFrame {
         ProfitjLabel.setText("0");
         getContentPane().add(ProfitjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 90, -1));
 
-        mApple.setText("0");
+        mApple.setText("15");
         getContentPane().add(mApple, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
         mE2.setText("\"estado\"");
@@ -535,7 +529,7 @@ public class DashboardApple extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CPUjLabel;
-    private javax.swing.JLabel CostsjLabel;
+    private javax.swing.JLabel Costs;
     private javax.swing.JLabel EarningjLabel;
     private javax.swing.JLabel FuenteAlimjLabel;
     private javax.swing.JButton HP;
@@ -545,7 +539,6 @@ public class DashboardApple extends javax.swing.JFrame {
     private javax.swing.JLabel ProfitjLabel;
     private javax.swing.JLabel RAMjLabel;
     private javax.swing.JLabel TarjetasGraficasjLabel;
-    private javax.swing.JLabel aPB;
     private javax.swing.JLabel cE;
     private javax.swing.JLabel cG;
     private javax.swing.JButton dCPU;

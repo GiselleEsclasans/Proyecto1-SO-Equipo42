@@ -72,13 +72,13 @@ public class Employee extends Thread {
     }
 
  
-    int c = 0;
+  
     @Override
     public void run() {
         while (true) {
-            c++;
+            
             try {
-                System.out.println(c + "Dia");
+            
                 // Trabajar durante un día
                 
                 earnSalary();

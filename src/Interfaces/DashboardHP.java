@@ -50,11 +50,11 @@ public class DashboardHP extends javax.swing.JFrame {
         }
         // Actualizar la interfaz gráfica con la información correspondiente
         // Por ejemplo:
-        CostsjLabel.setText(String.valueOf(workerCounts[0]));
+        Cost.setText(String.valueOf(workerCounts[0]));
         eCPU.setText(String.valueOf(workerCounts[1]));
         eRAM.setText(String.valueOf(workerCounts[2]));
         eFA.setText(String.valueOf(workerCounts[3]));
-        aPB.setText(String.valueOf(workerCounts[4]));
+       
         eE.setText(String.valueOf(workerCounts[5]));
     }
     
@@ -88,7 +88,7 @@ public class DashboardHP extends javax.swing.JFrame {
     }
     
     public void updateCostsSum(float sum) {
-        CostsjLabel.setText(String.valueOf(sum));
+        Cost.setText(String.valueOf(sum));
     }
    
     /**
@@ -109,12 +109,11 @@ public class DashboardHP extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        CostsjLabel = new javax.swing.JLabel();
+        Cost = new javax.swing.JLabel();
         cG = new javax.swing.JLabel();
         eRAM = new javax.swing.JLabel();
         eFA = new javax.swing.JLabel();
         mE = new javax.swing.JLabel();
-        aPB = new javax.swing.JLabel();
         PlacaBasejLabel = new javax.swing.JLabel();
         FuenteAlimjLabel = new javax.swing.JLabel();
         NodeComputadoras1 = new javax.swing.JLabel();
@@ -153,7 +152,7 @@ public class DashboardHP extends javax.swing.JFrame {
         ePB1 = new javax.swing.JLabel();
         EarningjLabel = new javax.swing.JLabel();
         ProfitjLabel = new javax.swing.JLabel();
-        mApple = new javax.swing.JLabel();
+        mHP = new javax.swing.JLabel();
         mE2 = new javax.swing.JLabel();
         mE3 = new javax.swing.JLabel();
         mE4 = new javax.swing.JLabel();
@@ -189,8 +188,8 @@ public class DashboardHP extends javax.swing.JFrame {
         jLabel9.setText("Máximo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 50, -1));
 
-        CostsjLabel.setText("0");
-        getContentPane().add(CostsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 90, -1));
+        Cost.setText("0");
+        getContentPane().add(Cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 90, -1));
 
         cG.setText("0");
         getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
@@ -203,9 +202,6 @@ public class DashboardHP extends javax.swing.JFrame {
 
         mE.setText("0");
         getContentPane().add(mE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
-
-        aPB.setText("0 / 0");
-        getContentPane().add(aPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 50, 20));
 
         PlacaBasejLabel.setText("0 / 25");
         getContentPane().add(PlacaBasejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
@@ -381,8 +377,8 @@ public class DashboardHP extends javax.swing.JFrame {
         ProfitjLabel.setText("0");
         getContentPane().add(ProfitjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 90, -1));
 
-        mApple.setText("0");
-        getContentPane().add(mApple, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
+        mHP.setText("20");
+        getContentPane().add(mHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
         mE2.setText("\"estado\"");
         getContentPane().add(mE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
@@ -495,7 +491,7 @@ public class DashboardHP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CPUjLabel;
-    private javax.swing.JLabel CostsjLabel;
+    private javax.swing.JLabel Cost;
     private javax.swing.JLabel EarningjLabel;
     private javax.swing.JLabel FuenteAlimjLabel;
     private javax.swing.JButton HP;
@@ -505,7 +501,6 @@ public class DashboardHP extends javax.swing.JFrame {
     private javax.swing.JLabel ProfitjLabel;
     private javax.swing.JLabel RAMjLabel;
     private javax.swing.JLabel TarjetasGraficasjLabel;
-    private javax.swing.JLabel aPB;
     private javax.swing.JLabel cE;
     private javax.swing.JLabel cG;
     private javax.swing.JButton dCPU;
@@ -547,10 +542,10 @@ public class DashboardHP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel mApple;
     private javax.swing.JLabel mE;
     private javax.swing.JLabel mE2;
     private javax.swing.JLabel mE3;
     private javax.swing.JLabel mE4;
+    private javax.swing.JLabel mHP;
     // End of variables declaration//GEN-END:variables
 }

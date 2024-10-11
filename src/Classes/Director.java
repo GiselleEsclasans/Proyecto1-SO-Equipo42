@@ -47,7 +47,7 @@ public class Director extends Thread {
 
                 // Elige una hora aleatoria para revisar al Project Manager
                 Random random = new Random();
-                int randomHour = random.nextInt(24); // Hora aleatoria del día
+                int randomHour = random.nextInt(this.getDayDuration() /24); // Hora aleatoria del día
 
                 try {
                     sleep(randomHour * (this.getDayDuration() / 24)); // Simula el tiempo hasta la hora elegida
@@ -71,7 +71,7 @@ public class Director extends Thread {
     }
 
     private void doAdministrativeWork() {
-        System.out.println(company + " Director realizando labores administrativas...");
+        //System.out.println(company + " Director realizando labores administrativas...");
         try {
             sleep(this.getDayDuration()); // Simula el tiempo de trabajo administrativo
         } catch (InterruptedException e) {
@@ -80,13 +80,13 @@ public class Director extends Thread {
     }
 
     private void reviewProjectManager() {
-        System.out.println(company + " Director revisando el trabajo del Project Manager...");
+        //System.out.println(company + " Director revisando el trabajo del Project Manager...");
 
         if (getProjectManager().isWatchingAnime()) {
             System.out.println(company + " Director descubrió al Project Manager viendo anime!");
             // Cambiado para utilizar correctamente la referencia a projectManager
             getProjectManager().deductSalary(100); // Descuenta $100 si está viendo anime
-            System.out.println("################################################################################################");
+            //System.out.println("################################################################################################");
         } else {
             //System.out.println(company + " Project Manager está trabajando.");
         }
