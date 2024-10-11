@@ -29,13 +29,20 @@ public class DashboardApple extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-
+        
         showInfo();
 
     }
     
     public void showInfo() {
         this.apple.setWindowApple(this);
+        updateWorkerCount(apple.getEmployees());
+        ePB1.setText(String.valueOf(apple.getEmployeeCount(0)));
+        eCPU.setText(String.valueOf(apple.getEmployeeCount(1)));
+        eRAM.setText(String.valueOf(apple.getEmployeeCount(2)));
+        eFA.setText(String.valueOf(apple.getEmployeeCount(3)));
+        eTG.setText(String.valueOf(apple.getEmployeeCount(4)));
+        eE.setText(String.valueOf(apple.getEmployeeCount(5)));
     }
     
     public JLabel getEpb2() {

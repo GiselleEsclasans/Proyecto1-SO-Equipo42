@@ -137,8 +137,10 @@ public class ProjectManager extends Thread {
             getMutex().acquire(); // Adquiere el semáforo antes de modificar el salario
             this.setTotalSalary(this.getTotalSalary() - amount); // Descuenta el salario
             //System.out.println(this.companyName + " Project Manager ha tenido un descuento de $ " + amount);
-            this.setFaults(this.getFaults() + 1);
-            this.setPenalties(- amount);
+
+            this.faults++;
+            this.penalties = this.penalties - amount;
+
             updateFaultsAndPenalties();
         } catch (InterruptedException e) {
             e.printStackTrace();

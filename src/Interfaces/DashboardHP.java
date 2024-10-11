@@ -27,10 +27,19 @@ public class DashboardHP extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         showInfo();
+        
     }
     
     public void showInfo() {
         this.hp.setWindowHP(this);
+        updateWorkerCount(hp.getEmployees());
+        ePB1.setText(String.valueOf(hp.getEmployeeCount(0)));
+        eCPU.setText(String.valueOf(hp.getEmployeeCount(1)));
+        eRAM.setText(String.valueOf(hp.getEmployeeCount(2)));
+        eFA.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eTG.setText(String.valueOf(hp.getEmployeeCount(4)));
+        eE.setText(String.valueOf(hp.getEmployeeCount(5)));
+        
     }
     
     
