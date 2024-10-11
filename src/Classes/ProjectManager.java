@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import Interfaces.DashboardApple;
+import Interfaces.DashboardHP;
 import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
@@ -18,6 +20,10 @@ public class ProjectManager extends Thread {
     private float totalSalary;             // Salario total acumulado
     private int daysLeft;                  // Días restantes para la entrega
     private boolean watchingAnime;          // Indica si está viendo anime
+    private DashboardApple dApple;
+    private DashboardHP dHP;
+    private int faults;
+    private float penalties;
 
     public ProjectManager(Company company, Semaphore m, int dayDuration, int daysLeft) {
         this.company = company;
@@ -27,6 +33,9 @@ public class ProjectManager extends Thread {
         this.daysLeft = daysLeft;
         this.watchingAnime = false; // Inicialmente no está viendo anime
         this.totalSalary = 0;
+        this.faults = 0;
+        this.penalties = 0;
+        
     }
 
     @Override
@@ -39,11 +48,14 @@ public class ProjectManager extends Thread {
                 for (float t = 0; t < 16 * (dayDuration/24); t += 1 * (dayDuration/24)) { // Cada hora representa 0.5 en 30 minutos
                     setWatchingAnime(true); // Está viendo anime
                     //System.out.println(this.companyName + " Project Manager viendo anime...");
+                    
+                    this.updateStatus("Project Manager viendo anime...");
                     earnSalary(); // Gana salario mientras ve anime
                     sleep(30 * (dayDuration/1440)); // Simula 30 minutos
 
                     setWatchingAnime(false); // Ahora trabaja
                     //System.out.println(this.companyName + " Project Manager revisando proyecto...");
+                    this.updateStatus("Project Manager revisando proyecto...");
                     earnSalary(); // Gana salario mientras trabaja
                     sleep(30 * (dayDuration/1440)); // Simula 30 minutos
                   
@@ -53,6 +65,7 @@ public class ProjectManager extends Thread {
 
                 // Últimas 8 horas del día
                 //System.out.println(this.companyName + " Project Manager actualizando días restantes...");
+                this.updateStatus("Project Manager actualizando días restantes...");
                 sleep(8 * (dayDuration/24)); // Simula 8 horas
                 getCompany().calculateOperativeCost(); // Calcular el costo operativo al final del día
                 setDaysLeft(getDaysLeft() - 1); // Reduce el contador de días
@@ -64,6 +77,28 @@ public class ProjectManager extends Thread {
 
         // Cuando no queden más días
         //System.out.println(this.companyName + " Project Manager ha terminado el proyecto. No quedan días restantes.");
+    }
+    
+    public void updateStatus(String status) {
+        if (dApple != null || dHP != null) {
+            if (this.companyName == "APPLE") {
+                dApple.updatePMStatus(status  + daysLeft);
+            } else {
+                dHP.updatePMStatus(status + daysLeft);
+            }
+        }
+    }
+    
+    public void updateFaultsAndPenalties() {
+        if (dApple != null || dHP != null) {
+            if (this.companyName == "APPLE") {
+                dApple.updatePMFaults(this.faults);
+                dApple.updatePMPenalties(this.penalties);
+            } else {
+                dHP.updatePMFaults(this.faults);
+                dHP.updatePMPenalties(this.penalties);
+            }
+        }
     }
 
     // Método para acumular salario
@@ -91,6 +126,9 @@ public class ProjectManager extends Thread {
             getMutex().acquire(); // Adquiere el semáforo antes de modificar el salario
             this.setTotalSalary(this.getTotalSalary() - amount); // Descuenta el salario
             //System.out.println(this.companyName + " Project Manager ha tenido un descuento de $ " + amount);
+            this.faults++;
+            this.penalties =- amount;
+            updateFaultsAndPenalties();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -192,5 +230,33 @@ public class ProjectManager extends Thread {
      */
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardApple getWindowApple() {
+        return this.dApple;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardHP getWindowHP() {
+        return this.dHP;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowHP(DashboardHP dHP) {
+        this.dHP = dHP;
     }
 }

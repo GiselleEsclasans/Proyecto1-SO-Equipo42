@@ -8,6 +8,8 @@ import static java.lang.Thread.sleep;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import DataStructure.Data;
+import Interfaces.DashboardApple;
+import Interfaces.DashboardHP;
 
 public class Director extends Thread {
     private String company;            // Compañía a la que pertenece
@@ -17,6 +19,9 @@ public class Director extends Thread {
     private ProjectManager projectManager; // Referencia al ProjectManager
     private int dayDuration;
     private int totalDays;
+    private String status;
+    private DashboardApple dApple;
+    private DashboardHP dHP;
 
 
     public Director(String company, Semaphore m, ProjectManager pm) {
@@ -26,6 +31,7 @@ public class Director extends Thread {
         this.totalSalary = 0;
         this.dayDuration = Data.dayDuration;
         this.totalDays = Data.totalDays;
+        this.status = "Empezando trabajo.";
 // =======
 // public class Director extends Employee {
 //     private String status;
@@ -72,6 +78,7 @@ public class Director extends Thread {
 
     private void doAdministrativeWork() {
         System.out.println(company + " Director realizando labores administrativas...");
+        updateStatus("Director realizando labores administrativas...");
         try {
             sleep(this.getDayDuration()); // Simula el tiempo de trabajo administrativo
         } catch (InterruptedException e) {
@@ -81,14 +88,25 @@ public class Director extends Thread {
 
     private void reviewProjectManager() {
         System.out.println(company + " Director revisando el trabajo del Project Manager...");
-
+        updateStatus("Director revisando el trabajo del Project Manager...");
+        
         if (getProjectManager().isWatchingAnime()) {
             System.out.println(company + " Director descubrió al Project Manager viendo anime!");
+            updateStatus("Director descubrió al Project Manager viendo anime!");
             // Cambiado para utilizar correctamente la referencia a projectManager
             getProjectManager().deductSalary(100); // Descuenta $100 si está viendo anime
-            System.out.println("################################################################################################");
         } else {
             //System.out.println(company + " Project Manager está trabajando.");
+        }
+    }
+    
+    public void updateStatus(String status) {
+        if (dApple != null || dHP != null) {
+            if (this.company == "APPLE") {
+                dApple.updatePMStatus(status);
+            } else {
+                dHP.updatePMStatus(status);
+            }
         }
     }
 
@@ -192,6 +210,34 @@ public class Director extends Thread {
      */
     public void setTotalDays(int totalDays) {
         this.totalDays = totalDays;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardApple getWindowApple() {
+        return this.dApple;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardHP getWindowHP() {
+        return this.dHP;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowHP(DashboardHP dHP) {
+        this.dHP = dHP;
     }
 
 }
