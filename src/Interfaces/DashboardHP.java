@@ -208,7 +208,7 @@ public class DashboardHP extends javax.swing.JFrame {
         eCPU.setText("1");
         getContentPane().add(eCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 10, -1));
 
-        HP.setText("Ir a HP");
+        HP.setText("Ir a Apple");
         HP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HPActionPerformed(evt);
@@ -370,9 +370,11 @@ public class DashboardHP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void HPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HPActionPerformed
-      DashboardHP dHP = new DashboardHP(hp, apple);
-      dHP.setVisible(true);
+      DashboardApple dApple = new DashboardApple(hp, apple);
+      dApple.setVisible(true);
       this.dispose();
+      
+     
     }//GEN-LAST:event_HPActionPerformed
 
     private void iFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iFAActionPerformed
