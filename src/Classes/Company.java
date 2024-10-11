@@ -45,8 +45,8 @@ public class Company {
     private int totalComputers;
     private int totalGraphipComputers;
     
-    DashboardApple dApple;
-    DashboardHP dHP;
+    private DashboardApple dApple;
+    private DashboardHP dHP;
     
 
   
@@ -79,8 +79,8 @@ public class Company {
         }
 
 
-        this.projectManager = new ProjectManager(this.company, this.mutex, Data.dayDuration, this.daysLeft);
-        this.director = new Director(this.company, this.mutex, this.projectManager);
+        this.projectManager = new ProjectManager(this, this.getMutex(), Data.dayDuration, this.getDaysLeft());
+        this.director = new Director(this.getCompany(), this.getMutex(), this.getProjectManager());
 
     }
 
@@ -94,7 +94,7 @@ public class Company {
         }
 
         // Distribuir los empleados restantes
-        int remainingEmployees = this.totalEmployees - 6;
+        int remainingEmployees = this.getTotalEmployees() - 6;
         for (int i = 0; i < remainingEmployees; i++) {
             int type = (int) (Math.random() * 6);
             employeeCounts[type]++;
@@ -103,10 +103,10 @@ public class Company {
         // Crear los empleados
         int employeeIndex = 0;
         for (int i = 0; i < 6; i++) {
-            Storage storage = (i < 5) ? this.storages[i] : null;
+            Storage storage = (i < 5) ? this.getStorages()[i] : null;
             for (int j = 0; j < employeeCounts[i]; j++) {
                 Employee employee = new Employee(this, employeeIndex, i, 0, 0, storage, new Semaphore(1));
-                this.employees[employeeIndex] = employee;
+                this.getEmployees()[employeeIndex] = employee;
                 employeeIndex++;
             }
         }
@@ -115,53 +115,53 @@ public class Company {
     
     public void startWork() {
        
-        for (Employee employee : employees) {
+        for (Employee employee : getEmployees()) {
             employee.start();
         }
         
-        this.projectManager.start();
-        this.director.start();
-        System.out.println("Project started for " + this.company);
+        this.getProjectManager().start();
+        this.getDirector().start();
+        System.out.println("Project started for " + this.getCompany());
     }
 
     public void updateDaysLeft(int days) {
-        this.daysLeft = days; // Actualiza los días restantes
-        this.projectManager.setDaysLeft(days); // Sincroniza el Project Manager con los nuevos días
+        this.setDaysLeft(days); // Actualiza los días restantes
+        this.getProjectManager().setDaysLeft(days); // Sincroniza el Project Manager con los nuevos días
     }
 
 
     
     public void incrementComputerCount() {
-    this.computerCount++;
-    System.out.println("\n\n" + this.company + " Computadoras normales " + this.computerCount + "\n");
+        this.setComputerCount(this.getComputerCount() + 1);
+    System.out.println("\n\n" + this.getCompany() + " Computadoras normales " + this.getComputerCount() + "\n");
     this.updateDashboard();
    
 }   
 
 public void incrementGraphicComputerCount() {
-    this.graphicComputerCount++;
-    System.out.println("\n\n" + this.company + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
+    this.setGraphicComputerCount(this.getGraphicComputerCount() + 1);
+    System.out.println("\n\n" + this.getCompany() + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
     this.updateDashboard();
    
 }
     
     public void incrementAssemblerCount() {
-        this.assemblerCount++;
+        this.setAssemblerCount(this.getAssemblerCount() + 1);
        
     }
     
     
     public void updateDashboard() {
-    if (this.company.equals("APPLE")) {
-        if (dApple != null) {
-            dApple.updateComputerCount(this.getComputerCount());
-            dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
+    if (this.getCompany().equals("APPLE")) {
+        if (getdApple() != null) {
+                getdApple().updateComputerCount(this.getComputerCount());
+                getdApple().updateGraphicComputerCount(this.getGraphicComputerCount());
          
         }
     } else {
-        if (dHP != null) {
-            dHP.updateComputerCount(this.getComputerCount());
-            dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
+        if (getdHP() != null) {
+                getdHP().updateComputerCount(this.getComputerCount());
+                getdHP().updateGraphicComputerCount(this.getGraphicComputerCount());
        
         }
     }
@@ -177,7 +177,7 @@ public void incrementGraphicComputerCount() {
     }
 
     int currentCount = 0;
-    for (Employee employee : employees) {
+    for (Employee employee : getEmployees()) {
         if (employee != null && employee.getType() == type) {
             currentCount++;
         }
@@ -191,13 +191,13 @@ public void incrementGraphicComputerCount() {
     }
 
     int totalEmployeesCount = 0;
-    for (Employee employee : employees) {
+    for (Employee employee : getEmployees()) {
         if (employee != null) {
             totalEmployeesCount++;
         }
     }
 
-    if (totalEmployeesCount + amount > totalEmployees) {
+    if (totalEmployeesCount + amount > getTotalEmployees()) {
         System.out.println("No se puede superar el máximo de empleados en la compañía");
         return;
     }
@@ -205,32 +205,32 @@ public void incrementGraphicComputerCount() {
     if (amount > 0) {
         // Agregar empleados
         for (int i = 0; i < amount; i++) {
-            Storage storage = (type < 5) ? storages[type] : null;
-            Employee employee = new Employee(this, employees.length, type, 0, 0, storage, new Semaphore(1));
+            Storage storage = (type < 5) ? getStorages()[type] : null;
+            Employee employee = new Employee(this, getEmployees().length, type, 0, 0, storage, new Semaphore(1));
             // Buscar el primer espacio disponible en el arreglo
             int index = 0;
-            while (index < employees.length && employees[index] != null) {
+            while (index < getEmployees().length && getEmployees()[index] != null) {
                 index++;
             }
-            if (index < employees.length) {
-                employees[index] = employee;
+            if (index < getEmployees().length) {
+                    getEmployees()[index] = employee;
                 employee.start();
             } else {
                 // Si no hay espacio disponible, aumentar el tamaño del arreglo
-                Employee[] newEmployees = new Employee[employees.length + 1];
-                System.arraycopy(employees, 0, newEmployees, 0, employees.length);
-                newEmployees[employees.length] = employee;
-                employees = newEmployees;
+                Employee[] newEmployees = new Employee[getEmployees().length + 1];
+                System.arraycopy(getEmployees(), 0, newEmployees, 0, getEmployees().length);
+                newEmployees[getEmployees().length] = employee;
+                    setEmployees(newEmployees);
                 employee.start();
             }
         }
     } else if (amount < 0) {
         // Restar empleados
         int count = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null && employees[i].getType() == type) {
-                employees[i].interrupt();
-                employees[i] = null;
+        for (int i = 0; i < getEmployees().length; i++) {
+            if (getEmployees()[i] != null && getEmployees()[i].getType() == type) {
+                    getEmployees()[i].interrupt();
+                    getEmployees()[i] = null;
                 count++;
                 if (count == -amount) {
                     break;
@@ -239,17 +239,17 @@ public void incrementGraphicComputerCount() {
         }
         // Reorganizar el arreglo para eliminar valores null
         int newIndex = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                employees[newIndex] = employees[i];
+        for (int i = 0; i < getEmployees().length; i++) {
+            if (getEmployees()[i] != null) {
+                    getEmployees()[newIndex] = getEmployees()[i];
                 newIndex++;
             }
         }
         // Reducir el tamaño del arreglo si es necesario
-        if (newIndex < employees.length) {
+        if (newIndex < getEmployees().length) {
             Employee[] newEmployees = new Employee[newIndex];
-            System.arraycopy(employees, 0, newEmployees, 0, newIndex);
-            employees = newEmployees;
+            System.arraycopy(getEmployees(), 0, newEmployees, 0, newIndex);
+                setEmployees(newEmployees);
         }
     }
 
@@ -258,8 +258,8 @@ public void incrementGraphicComputerCount() {
   
     public void printEmployeeCount(int type) {
     int count = 0;
-    if (employees != null) {
-        for (Employee employee : employees) {
+    if (getEmployees() != null) {
+        for (Employee employee : getEmployees()) {
             if (employee != null && employee.getType() == type) {
                 count++;
             }
@@ -268,6 +268,59 @@ public void incrementGraphicComputerCount() {
     System.out.println("Hay " + count + " empleados de tipo " + type + " actualmente.");
 }
   
+    
+    public void calculateOperativeCost() {
+    float totalCost = 0;
+
+    // Sumar el sueldo de todos los trabajadores
+    for (Employee employee : getEmployees()) {
+        if (employee != null) {
+            totalCost += employee.getTotalSalary();
+        }
+    }
+
+    // Sumar el sueldo del director
+    totalCost += getDirector().getTotalSalary();
+
+    // Sumar el sueldo del project manager
+    totalCost += getProjectManager().getTotalSalary();
+
+    this.setCost(totalCost);
+    int companyIndex = getCompany().equals("HP") ? 0 : 1;
+    this.setEarning(getEarning() + getComputerCount() * Data.profitTypeComputer[companyIndex][0] + getGraphicComputerCount() * Data.profitTypeComputer[companyIndex][1]);
+    
+    if (this.getCost() > 0){
+    this.setProfit(this.getEarning() - this.getCost());}
+    this.resetSalaries();
+      
+        System.out.println(this.earning);
+        System.out.println(this.cost);
+        System.out.println(this.profit);
+        
+   }
+    
+    public void resetSalaries() {
+    for (Employee employee : getEmployees()) {
+        if (employee != null) {
+            employee.resetSalary();
+        }
+    }
+    getDirector().resetSalary();
+    getProjectManager().resetSalary();
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public int getComputerCount() {
         return this.computerCount;
@@ -286,7 +339,7 @@ public void incrementGraphicComputerCount() {
     
   public int getEmployeeCount(int type) {
     int count = 0;
-    for (Employee employee : employees) {
+    for (Employee employee : getEmployees()) {
         if (employee != null && employee.getType() == type) {
             count++;
         }
@@ -317,7 +370,7 @@ public void incrementGraphicComputerCount() {
     int[] employeeCounts = new int[6]; // Contadores de empleados por tipo
 
     // Contar los empleados por tipo
-    for (Employee employee : this.employees) {
+    for (Employee employee : this.getEmployees()) {
         employeeCounts[employee.getType()]++;
     }
 
@@ -347,6 +400,328 @@ public void incrementGraphicComputerCount() {
      */
     public void setAssemblerCount(int assemblerCount) {
         this.assemblerCount = assemblerCount;
+    }
+
+    /**
+     * @param company the company to set
+     */
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    /**
+     * @return the totalEmployees
+     */
+    public int getTotalEmployees() {
+        return totalEmployees;
+    }
+
+    /**
+     * @param totalEmployees the totalEmployees to set
+     */
+    public void setTotalEmployees(int totalEmployees) {
+        this.totalEmployees = totalEmployees;
+    }
+
+    /**
+     * @return the actualEmployees
+     */
+    public int getActualEmployees() {
+        return actualEmployees;
+    }
+
+    /**
+     * @param actualEmployees the actualEmployees to set
+     */
+    public void setActualEmployees(int actualEmployees) {
+        this.actualEmployees = actualEmployees;
+    }
+
+    /**
+     * @param employees the employees to set
+     */
+    public void setEmployees(Employee[] employees) {
+        this.employees = employees;
+    }
+
+    /**
+     * @return the ePlacaBase
+     */
+    public Employee[] getePlacaBase() {
+        return ePlacaBase;
+    }
+
+    /**
+     * @param ePlacaBase the ePlacaBase to set
+     */
+    public void setePlacaBase(Employee[] ePlacaBase) {
+        this.ePlacaBase = ePlacaBase;
+    }
+
+    /**
+     * @return the eCPU
+     */
+    public Employee[] geteCPU() {
+        return eCPU;
+    }
+
+    /**
+     * @param eCPU the eCPU to set
+     */
+    public void seteCPU(Employee[] eCPU) {
+        this.eCPU = eCPU;
+    }
+
+    /**
+     * @return the eRAM
+     */
+    public Employee[] geteRAM() {
+        return eRAM;
+    }
+
+    /**
+     * @param eRAM the eRAM to set
+     */
+    public void seteRAM(Employee[] eRAM) {
+        this.eRAM = eRAM;
+    }
+
+    /**
+     * @return the eFA
+     */
+    public Employee[] geteFA() {
+        return eFA;
+    }
+
+    /**
+     * @param eFA the eFA to set
+     */
+    public void seteFA(Employee[] eFA) {
+        this.eFA = eFA;
+    }
+
+    /**
+     * @return the eTG
+     */
+    public Employee[] geteTG() {
+        return eTG;
+    }
+
+    /**
+     * @param eTG the eTG to set
+     */
+    public void seteTG(Employee[] eTG) {
+        this.eTG = eTG;
+    }
+
+    /**
+     * @return the assemblers
+     */
+    public Employee[] getAssemblers() {
+        return assemblers;
+    }
+
+    /**
+     * @param assemblers the assemblers to set
+     */
+    public void setAssemblers(Employee[] assemblers) {
+        this.assemblers = assemblers;
+    }
+
+    /**
+     * @param storages the storages to set
+     */
+    public void setStorages(Storage[] storages) {
+        this.storages = storages;
+    }
+
+    /**
+     * @return the dayCount
+     */
+    public int getDayCount() {
+        return dayCount;
+    }
+
+    /**
+     * @param dayCount the dayCount to set
+     */
+    public void setDayCount(int dayCount) {
+        this.dayCount = dayCount;
+    }
+
+    /**
+     * @param projectManager the projectManager to set
+     */
+    public void setProjectManager(ProjectManager projectManager) {
+        this.projectManager = projectManager;
+    }
+
+    /**
+     * @return the director
+     */
+    public Director getDirector() {
+        return director;
+    }
+
+    /**
+     * @param director the director to set
+     */
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    /**
+     * @param daysLeft the daysLeft to set
+     */
+    public void setDaysLeft(int daysLeft) {
+        this.daysLeft = daysLeft;
+    }
+
+    /**
+     * @return the storage
+     */
+    public static Storage getStorage() {
+        return storage;
+    }
+
+    /**
+     * @param aStorage the storage to set
+     */
+    public static void setStorage(Storage aStorage) {
+        storage = aStorage;
+    }
+
+    /**
+     * @return the mutex
+     */
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    /**
+     * @param mutex the mutex to set
+     */
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
+    }
+
+    /**
+     * @return the cost
+     */
+    public float getCost() {
+        return cost;
+    }
+
+    /**
+     * @param cost the cost to set
+     */
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    /**
+     * @return the earning
+     */
+    public float getEarning() {
+        return earning;
+    }
+
+    /**
+     * @param earning the earning to set
+     */
+    public void setEarning(float earning) {
+        this.earning = earning;
+    }
+
+    /**
+     * @return the profit
+     */
+    public float getProfit() {
+        return profit;
+    }
+
+    /**
+     * @param profit the profit to set
+     */
+    public void setProfit(float profit) {
+        this.profit = profit;
+    }
+
+    /**
+     * @return the days
+     */
+    public int getDays() {
+        return days;
+    }
+
+    /**
+     * @param days the days to set
+     */
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    /**
+     * @param graphicComputerCount the graphicComputerCount to set
+     */
+    public void setGraphicComputerCount(int graphicComputerCount) {
+        this.graphicComputerCount = graphicComputerCount;
+    }
+
+    /**
+     * @return the totalComputers
+     */
+    public int getTotalComputers() {
+        return totalComputers;
+    }
+
+    /**
+     * @param totalComputers the totalComputers to set
+     */
+    public void setTotalComputers(int totalComputers) {
+        this.totalComputers = totalComputers;
+    }
+
+    /**
+     * @return the totalGraphipComputers
+     */
+    public int getTotalGraphipComputers() {
+        return totalGraphipComputers;
+    }
+
+    /**
+     * @param totalGraphipComputers the totalGraphipComputers to set
+     */
+    public void setTotalGraphipComputers(int totalGraphipComputers) {
+        this.totalGraphipComputers = totalGraphipComputers;
+    }
+
+    /**
+     * @return the dApple
+     */
+    public DashboardApple getdApple() {
+        return dApple;
+    }
+
+    /**
+     * @param dApple the dApple to set
+     */
+    public void setdApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+
+    /**
+     * @return the dHP
+     */
+    public DashboardHP getdHP() {
+        return dHP;
+    }
+
+    /**
+     * @param dHP the dHP to set
+     */
+    public void setdHP(DashboardHP dHP) {
+        this.dHP = dHP;
     }
     
     /**
