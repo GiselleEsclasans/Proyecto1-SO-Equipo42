@@ -152,22 +152,86 @@ public void incrementGraphicComputerCount() {
     
     
     public void updateDashboard() {
+        if (this.company.equals("APPLE")) {
+            if (dApple != null) {
+                dApple.updateComputerCount(this.getComputerCount());
+                dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
+
+            }
+        } else {
+            if (dHP != null) {
+                dHP.updateComputerCount(this.getComputerCount());
+                dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
+
+            }
+        }
+    }
+  
+   // Método para actualizar el dashboard con los contadores de almacenamiento
+public void updateStorageCapacity() {
+    if (this.company.equals("APPLE")) {
+        if (dApple != null) {
+            for (int i = 0; i < storages.length; i++) {
+                int currentCapacity = storages[i].getCurrentCapacity();
+                int maxCapacity = storages[i].getCapacity();
+                if (i == 0) {
+                    dApple.updatePlacaBaseCount(currentCapacity);
+//                    dApple.getEpb().setText(currentCapacity + " / " + maxCapacity); // Placa Base
+                } else if (i == 1) {
+                    dApple.updateCPUCount(currentCapacity);
+//                    dApple.getEc().setText(currentCapacity + " / " + maxCapacity); // CPU
+                } else if (i == 2) {
+                    dApple.updateRAMCount(currentCapacity);
+//                    dApple.getEr().setText(currentCapacity + " / " + maxCapacity); // Memoria RAM
+                } else if (i == 3) {
+                    dApple.updateFuenteAlimentacionCount(currentCapacity);
+//                    dApple.getEf().setText(currentCapacity + " / " + maxCapacity); // Fuente de Alimentación
+                } else if (i == 4) {
+                    dApple.updateTarjetasGraficasCount(currentCapacity);
+//                    dApple.getEt().setText(currentCapacity + " / " + maxCapacity); // Tarjetas Gráficas
+                }
+            }
+        }
+    } else if (this.company.equals("HP")) {
+        if (dHP != null) {
+            for (int i = 0; i < storages.length; i++) {
+                int currentCapacity = storages[i].getCurrentCapacity();
+                int maxCapacity = storages[i].getCapacity();
+                if (i == 0) {
+                    dHP.updatePlacaBaseCount(currentCapacity);
+//                    dApple.getEpb().setText(currentCapacity + " / " + maxCapacity); // Placa Base
+                } else if (i == 1) {
+                    dHP.updateCPUCount(currentCapacity);
+//                    dApple.getEc().setText(currentCapacity + " / " + maxCapacity); // CPU
+                } else if (i == 2) {
+                    dHP.updateRAMCount(currentCapacity);
+//                    dApple.getEr().setText(currentCapacity + " / " + maxCapacity); // Memoria RAM
+                } else if (i == 3) {
+                    dHP.updateFuenteAlimentacionCount(currentCapacity);
+//                    dApple.getEf().setText(currentCapacity + " / " + maxCapacity); // Fuente de Alimentación
+                } else if (i == 4) {
+                    dHP.updateTarjetasGraficasCount(currentCapacity);
+//                    dApple.getEt().setText(currentCapacity + " / " + maxCapacity); // Tarjetas Gráficas
+                }
+            }
+        }
+    }
+}
+
+// Método para actualizar el número de computadoras ensambladas y computadoras con gráficas
+public void updateComputerCounts() {
     if (this.company.equals("APPLE")) {
         if (dApple != null) {
             dApple.updateComputerCount(this.getComputerCount());
             dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
-         
         }
-    } else {
+    } else if (this.company.equals("HP")) {
         if (dHP != null) {
             dHP.updateComputerCount(this.getComputerCount());
             dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
-       
         }
     }
 }
-  
-   
     
   
    public void adjustEmployeeCount(int type, int amount) {

@@ -51,6 +51,27 @@ public class DashboardApple extends javax.swing.JFrame {
         cG.setText(String.valueOf(count));
     }
     
+    public void updatePlacaBaseCount(int count) {
+        PlacaBasejLabel.setText(String.valueOf(count) + " / 25");
+        
+    }
+
+    public void updateCPUCount(int count) {
+        CPUjLabel.setText(String.valueOf(count) + " / 20");
+    }
+    
+    public void updateRAMCount(int count) {
+        RAMjLabel.setText(String.valueOf(count) + " / 55");
+    }
+    
+    public void updateTarjetasGraficasCount(int count) {
+        TarjetasGraficasjLabel.setText(String.valueOf(count) + " / 10");
+    }
+    
+    public void updateFuenteAlimentacionCount(int count) {
+        FuenteAlimjLabel.setText(String.valueOf(count) + " / 35");
+    }
+    
     public void updateStorageCapacity(Storage[] storages) {
         for (int i = 0; i < storages.length; i++) {
             String storageType = Data.producerTypes[i];
@@ -59,15 +80,15 @@ public class DashboardApple extends javax.swing.JFrame {
             // Actualizar la interfaz gráfica con la información correspondiente
             // Por ejemplo:
             if (i == 0) {
-                aPB.setText(currentCapacity + " / " + maxCapacity);
+                aPB.setText(currentCapacity + " / " + maxCapacity); // Placa Base
             } else if (i == 1) {
-                aCPU.setText(currentCapacity + " / " + maxCapacity);
+                PlacaBasejLabel.setText(currentCapacity + " / " + maxCapacity); // CPU
             } else if (i == 2) {
-                aRAM.setText(currentCapacity + " / " + maxCapacity);
+                FuenteAlimjLabel.setText(currentCapacity + " / " + maxCapacity); // Memorias RAM
             } else if (i == 3) {
-                aFA.setText(currentCapacity + " / " + maxCapacity);
+                TarjetasGraficasjLabel.setText(currentCapacity + " / " + maxCapacity); // Fuentes de alimentacion
             } else if (i == 4) {
-                aTG.setText(currentCapacity + " / " + maxCapacity);
+                RAMjLabel.setText(currentCapacity + " / " + maxCapacity); // Tarjetas Graficas
             }
         }
     }
@@ -116,14 +137,14 @@ public class DashboardApple extends javax.swing.JFrame {
         eFA = new javax.swing.JLabel();
         mE = new javax.swing.JLabel();
         aPB = new javax.swing.JLabel();
-        aCPU = new javax.swing.JLabel();
-        aRAM = new javax.swing.JLabel();
+        PlacaBasejLabel = new javax.swing.JLabel();
+        FuenteAlimjLabel = new javax.swing.JLabel();
         NodeComputadoras1 = new javax.swing.JLabel();
-        aTG = new javax.swing.JLabel();
+        RAMjLabel = new javax.swing.JLabel();
         cE = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         eE = new javax.swing.JLabel();
-        aFA = new javax.swing.JLabel();
+        TarjetasGraficasjLabel = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -141,7 +162,7 @@ public class DashboardApple extends javax.swing.JFrame {
         dRAM = new javax.swing.JButton();
         dE = new javax.swing.JButton();
         dCPU = new javax.swing.JButton();
-        aCPU1 = new javax.swing.JLabel();
+        CPUjLabel = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -208,17 +229,17 @@ public class DashboardApple extends javax.swing.JFrame {
         aPB.setText("0 / 0");
         getContentPane().add(aPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 50, 20));
 
-        aCPU.setText("0 / 0");
-        getContentPane().add(aCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
+        PlacaBasejLabel.setText("0 / 25");
+        getContentPane().add(PlacaBasejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
 
-        aRAM.setText("0 / 0");
-        getContentPane().add(aRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
+        FuenteAlimjLabel.setText("0 / 35");
+        getContentPane().add(FuenteAlimjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
 
         NodeComputadoras1.setText("Computador Estándar:");
         getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
 
-        aTG.setText("0 / 0");
-        getContentPane().add(aTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
+        RAMjLabel.setText("0 / 55");
+        getContentPane().add(RAMjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
 
         cE.setText("0");
         getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
@@ -229,8 +250,8 @@ public class DashboardApple extends javax.swing.JFrame {
         eE.setText("1");
         getContentPane().add(eE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
 
-        aFA.setText("0 / 0 ");
-        getContentPane().add(aFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
+        TarjetasGraficasjLabel.setText("0 / 10 ");
+        getContentPane().add(TarjetasGraficasjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
 
         jLabel23.setText("Tarjetas Gráficas");
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
@@ -343,8 +364,8 @@ public class DashboardApple extends javax.swing.JFrame {
         });
         getContentPane().add(dCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
-        aCPU1.setText("0 / 0");
-        getContentPane().add(aCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
+        CPUjLabel.setText("0 / 20");
+        getContentPane().add(CPUjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
 
         jLabel10.setText("Trabajadores");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
@@ -498,15 +519,15 @@ public class DashboardApple extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CPUjLabel;
+    private javax.swing.JLabel FuenteAlimjLabel;
     private javax.swing.JButton HP;
     private javax.swing.JLabel NodeComputadoras;
     private javax.swing.JLabel NodeComputadoras1;
-    private javax.swing.JLabel aCPU;
-    private javax.swing.JLabel aCPU1;
-    private javax.swing.JLabel aFA;
+    private javax.swing.JLabel PlacaBasejLabel;
+    private javax.swing.JLabel RAMjLabel;
+    private javax.swing.JLabel TarjetasGraficasjLabel;
     private javax.swing.JLabel aPB;
-    private javax.swing.JLabel aRAM;
-    private javax.swing.JLabel aTG;
     private javax.swing.JLabel cE;
     private javax.swing.JLabel cG;
     private javax.swing.JButton dCPU;

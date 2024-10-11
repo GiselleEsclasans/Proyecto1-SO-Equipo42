@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import Interfaces.DashboardApple;
+import Interfaces.DashboardHP;
+
 /**
  *
  * @author gigie
@@ -13,6 +16,9 @@ public class Storage {
     private int currentCapacity;
     private String productType;
     private Company company; 
+    
+    private DashboardApple dApple;
+    private DashboardHP dHP;
    
 
     public Storage(int capacity, String productType, Company company) {
@@ -50,4 +56,33 @@ public class Storage {
     public int getCurrentCapacity() {
         return currentCapacity;
     }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardApple getWindowApple() {
+        return this.dApple;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardHP getWindowHP() {
+        return this.dHP;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowHP(DashboardHP dHP) {
+        this.dHP = dHP;
+    }
+    
 }

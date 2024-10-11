@@ -10,6 +10,8 @@ package Classes;
  */
 
 import DataStructure.Data;
+import Interfaces.DashboardApple;
+import Interfaces.DashboardHP;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +39,9 @@ public class Employee extends Thread {
     
     private int productionRate; // Tasa de producción del trabajador
     private int productionInterval; // Intervalo de producción del trabajador
+    
+    DashboardApple dApple;
+    DashboardHP dHP;
     
     
     public Employee(Company company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
@@ -77,6 +82,7 @@ public class Employee extends Thread {
                 earnSalary();
                 work();
                 sleep(this.dayDuration);
+                this.company.updateStorageCapacity();
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt(); // Reestablecer la bandera de interrupción
                 System.out.println("Hilo interrumpido");
@@ -104,6 +110,7 @@ public class Employee extends Thread {
                     if (this.companyName == "HP") {
                         this.productionRate = Data.productionRates[0][this.type];
                         this.productionInterval = Data.productionIntervals[0][this.type];
+                        
                     } else {
                         this.productionRate = Data.productionRates[1][this.type];
                         this.productionInterval = Data.productionIntervals[1][this.type];

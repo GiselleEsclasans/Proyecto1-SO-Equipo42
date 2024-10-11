@@ -46,10 +46,10 @@ public class ProjectManager extends Thread {
                 }
 
                 // Últimas 8 horas del día
-                //System.out.println(this.company + " Project Manager actualizando días restantes...");
+                System.out.println(this.company + " Project Manager actualizando días restantes...");
                 sleep(dayDuration / 24 * 8); // Simula 8 horas
                 daysLeft--; // Reduce el contador de días
-                //System.out.println(this.company + " Días restantes para entregar las computadoras: " + daysLeft);
+                System.out.println(this.company + " Días restantes para entregar las computadoras: " + daysLeft);
 
 // =======
 //                 // Ciclo de ver anime y revisar el proyecto (animeTime en total)
