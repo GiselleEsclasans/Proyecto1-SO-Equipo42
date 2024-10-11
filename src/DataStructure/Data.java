@@ -60,5 +60,7 @@ public class Data {
         10  // Productores de tarjetas gráficas
     };
     public static int[] workerCounts = new int[5];
+    
+    public static int daysLeft = 30;
 }
 

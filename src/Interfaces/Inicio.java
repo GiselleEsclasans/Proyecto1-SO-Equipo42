@@ -5,6 +5,12 @@
 package Interfaces;
 
 import Classes.Company;
+import DataStructure.Data;
+import static Main.App.apple;
+import static Main.App.hp;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  *
@@ -27,11 +33,84 @@ public class Inicio extends javax.swing.JFrame {
     
     
     public Inicio(Company hp, Company apple) {
+        initComponents();
+        loadFromFile();
+        if (this.hp == null && this.apple == null) {
+            hp = new Company("HP", 20, Data.daysLeft);
+            apple = new Company("APPLE", 15, Data.daysLeft);
+        }
         this.hp = hp;
         this.apple = apple;
-        initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+    
+    public void loadFromFile() {
+        try {
+            File file = new File("./src/Public/settings.txt");
+            
+//            if (!file.exists()) {
+////                file.getParentFile().mkdirs(); // Crea los directorios necesarios si no existen
+//                file.createNewFile(); // Crea el archivo si no existe
+//                return;
+//            }
+            
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                // Separar el nombre del parámetro y el valor
+                String[] parts = line.split(": ");
+                String parameterName = parts[0];
+                String parameterValue = parts[1];
+                System.out.println(parameterName + parameterValue);
+
+                // Asignar los valores a los JTextFields y variables correspondientes
+                switch (parameterName) {
+                    case "Duracion del dia (segundos)":
+                        // Asignar al JTextField correspondiente y a la variable global
+                    
+                        Data.dayDuration = Integer.parseInt(parameterValue) * 1000; // Convertir a milisegundos
+                        break;
+                    case "Dias para entrega":
+                        Data.totalDays = Integer.parseInt(parameterValue);
+                        break;
+//                    case "Trabajadores tipo Placa Base":
+//                        PlacaBaseTextField.setText(parameterValue);
+//                        Data.workerCounts[0] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo CPU":
+//                        CPUTextField.setText(parameterValue);
+//                        Data.workerCounts[1] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo RAM":
+//                        RamMemoryTextField.setText(parameterValue);
+//                        Data.workerCounts[2] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo Fuente de Alimentacion":
+//                        FuenteATextField.setText(parameterValue);
+//                        Data.workerCounts[3] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Ensambladores":
+//                        AssemblersTextField.setText(parameterValue);
+//                        Data.workerCounts[4] = Integer.parseInt(parameterValue);
+//                        break;
+                    default:
+                        System.out.println("Parámetro desconocido: " + parameterName);
+                        break;
+                }
+            }
+            scanner.close();
+            System.out.println("Parámetros cargados correctamente.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado.");
+            
+            e.printStackTrace();
+        } 
+//        catch (IOException ex) {
+//            Logger.getLogger(TxtDataApple.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**
@@ -47,7 +126,6 @@ public class Inicio extends javax.swing.JFrame {
         HP = new javax.swing.JButton();
         AppleButton = new javax.swing.JButton();
         DataTxtAppleButton = new javax.swing.JButton();
-        DataTxtHPButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,21 +148,13 @@ public class Inicio extends javax.swing.JFrame {
         });
         jPanel1.add(AppleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
 
-        DataTxtAppleButton.setText("Cambiar Data Apple TXT");
+        DataTxtAppleButton.setText("Cambiar Data TXT");
         DataTxtAppleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DataTxtAppleButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(DataTxtAppleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-
-        DataTxtHPButton.setText("Cambiar Data HP TXT");
-        DataTxtHPButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DataTxtHPButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(DataTxtHPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 170, -1));
+        jPanel1.add(DataTxtAppleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 3, 400, 200));
 
@@ -104,15 +174,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void DataTxtAppleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataTxtAppleButtonActionPerformed
         // TODO add your handling code here:
-        TxtDataApple txtDataApple = new TxtDataApple(this);
+        TxtData txtDataApple = new TxtData(this);
         this.setVisible(false);
     }//GEN-LAST:event_DataTxtAppleButtonActionPerformed
-
-    private void DataTxtHPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataTxtHPButtonActionPerformed
-        // TODO add your handling code here:
-        TxtDataHP txtDataHP = new TxtDataHP(this);
-        this.setVisible(false);
-    }//GEN-LAST:event_DataTxtHPButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +216,6 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppleButton;
     private javax.swing.JButton DataTxtAppleButton;
-    private javax.swing.JButton DataTxtHPButton;
     private javax.swing.JButton HP;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

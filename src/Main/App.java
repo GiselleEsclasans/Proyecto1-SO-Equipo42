@@ -6,6 +6,7 @@ package Main;
 
 import Classes.Company;
 import Interfaces.Inicio;
+import DataStructure.Data;
 
 
 /**
@@ -22,8 +23,8 @@ public class App {
     public static App getInstance() {
         if (instance == null) {
             instance = new App();
-            hp = new Company("HP", 20, 30);
-            apple = new Company("APPLE", 15, 30);
+            hp = new Company("HP", 20, Data.daysLeft);
+            apple = new Company("APPLE", 15, Data.daysLeft);
         }
         return instance;
     }
