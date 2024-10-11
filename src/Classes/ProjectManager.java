@@ -127,7 +127,7 @@ public class ProjectManager extends Thread {
             this.setTotalSalary(this.getTotalSalary() - amount); // Descuenta el salario
             //System.out.println(this.companyName + " Project Manager ha tenido un descuento de $ " + amount);
             this.faults++;
-            this.penalties =- amount;
+            this.penalties = this.penalties - amount;
             updateFaultsAndPenalties();
         } catch (InterruptedException e) {
             e.printStackTrace();
