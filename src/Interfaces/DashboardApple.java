@@ -5,6 +5,9 @@
 package Interfaces;
 
 import Classes.Company;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 import Classes.Employee;
 import Classes.Storage;
 import DataStructure.Data;
@@ -26,11 +29,16 @@ public class DashboardApple extends javax.swing.JFrame {
         this.hp = hp;
         this.apple = apple;
         initComponents();
+        
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        showInfo();
     }
     
-    
+    public void showInfo() {
+        this.apple.setWindowApple(this);
+        this.apple.printApple();
+    }
     
     public void updateComputerCount(int count) {
         cE.setText(String.valueOf(count));
@@ -41,6 +49,10 @@ public class DashboardApple extends javax.swing.JFrame {
         cG.setText(String.valueOf(count));
     }
     
+    public JLabel getEpb2() {
+        return ePB2;
+    }
+
     public void updateStorageCapacity(Storage[] storages) {
         for (int i = 0; i < storages.length; i++) {
             String storageType = Data.producerTypes[i];
@@ -91,6 +103,7 @@ public class DashboardApple extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         NodeComputadoras = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -153,86 +166,93 @@ public class DashboardApple extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("Penalización");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         NodeComputadoras.setText("Computador con tarjeta gráfica:");
-        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 20));
+        jPanel1.add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 20));
 
         jLabel2.setText("Placa Base");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel3.setText("CPU");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLabel4.setText("Memoria RAM");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel5.setText("Fuente de Alimentación");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel6.setText("Apple");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jLabel7.setText("Costos");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
 
         jLabel9.setText("Máximo:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 50, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 50, -1));
 
         ePB.setText("0");
-        getContentPane().add(ePB, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 20, -1));
+        jPanel1.add(ePB, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 20, -1));
 
         cG.setText("0");
-        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
+        jPanel1.add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
 
         eRAM.setText("1");
-        getContentPane().add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 10, -1));
+        jPanel1.add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 10, -1));
 
         eFA.setText("1");
-        getContentPane().add(eFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 10, -1));
+        jPanel1.add(eFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 10, -1));
 
         mE.setText("0");
-        getContentPane().add(mE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
+        jPanel1.add(mE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
 
         aPB.setText("0 / 0");
-        getContentPane().add(aPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 50, 20));
+        jPanel1.add(aPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 50, 20));
 
         aCPU.setText("0 / 0");
-        getContentPane().add(aCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
+        jPanel1.add(aCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
 
         aRAM.setText("0 / 0");
-        getContentPane().add(aRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
+        jPanel1.add(aRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
 
         NodeComputadoras1.setText("Computador Estándar:");
-        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
+        jPanel1.add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
 
         aTG.setText("0 / 0");
-        getContentPane().add(aTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
+        jPanel1.add(aTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
 
         cE.setText("0");
-        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
+        jPanel1.add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
 
         jLabel20.setText("Director");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
+// <<<<<<< AndresImery
+//         eTG.setText("1");
+//         jPanel1.add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
+// =======
         eE.setText("1");
         getContentPane().add(eE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
+// >>>>>>> main
 
         aFA.setText("0 / 0 ");
-        getContentPane().add(aFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
+        jPanel1.add(aFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
 
         jLabel23.setText("Tarjetas Gráficas");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLabel24.setText("Ensamblador");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jLabel25.setText("Project Manager");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         eCPU.setText("1");
-        getContentPane().add(eCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 10, -1));
+        jPanel1.add(eCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 10, -1));
 
         HP.setText("Ir a HP");
         HP.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +260,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 HPActionPerformed(evt);
             }
         });
-        getContentPane().add(HP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
+        jPanel1.add(HP, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
         iFA.setText("+");
         iFA.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +268,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 iFAActionPerformed(evt);
             }
         });
-        getContentPane().add(iFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        jPanel1.add(iFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         iPB.setText("+");
         iPB.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +276,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 iPBActionPerformed(evt);
             }
         });
-        getContentPane().add(iPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        jPanel1.add(iPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
 
         iRAM.setText("+");
         iRAM.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +284,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 iRAMActionPerformed(evt);
             }
         });
-        getContentPane().add(iRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        jPanel1.add(iRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
         iE.setText("+");
         iE.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +292,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 iEActionPerformed(evt);
             }
         });
-        getContentPane().add(iE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
+        jPanel1.add(iE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         iCPU.setText("+");
         iCPU.addActionListener(new java.awt.event.ActionListener() {
@@ -280,10 +300,15 @@ public class DashboardApple extends javax.swing.JFrame {
                 iCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(iCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
+        jPanel1.add(iCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
+// <<<<<<< AndresImery
+//         eTG1.setText("1");
+//         jPanel1.add(eTG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 10, -1));
+// =======
         eTG.setText("1");
         getContentPane().add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 10, -1));
+// >>>>>>> main
 
         iTG.setText("+");
         iTG.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +316,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 iTGActionPerformed(evt);
             }
         });
-        getContentPane().add(iTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        jPanel1.add(iTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
 
         dTG.setText("-");
         dTG.addActionListener(new java.awt.event.ActionListener() {
@@ -299,7 +324,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 dTGActionPerformed(evt);
             }
         });
-        getContentPane().add(dTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+        jPanel1.add(dTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
         dPB.setText("-");
         dPB.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +332,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 dPBActionPerformed(evt);
             }
         });
-        getContentPane().add(dPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+        jPanel1.add(dPB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
         dRAM.setText("-");
         dRAM.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +340,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 dRAMActionPerformed(evt);
             }
         });
-        getContentPane().add(dRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        jPanel1.add(dRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
 
         dE.setText("-");
         dE.addActionListener(new java.awt.event.ActionListener() {
@@ -323,7 +348,7 @@ public class DashboardApple extends javax.swing.JFrame {
                 dEActionPerformed(evt);
             }
         });
-        getContentPane().add(dE, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+        jPanel1.add(dE, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
         dCPU.setText("-");
         dCPU.addActionListener(new java.awt.event.ActionListener() {
@@ -331,58 +356,58 @@ public class DashboardApple extends javax.swing.JFrame {
                 dCPUActionPerformed(evt);
             }
         });
-        getContentPane().add(dCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        jPanel1.add(dCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         aCPU1.setText("0 / 0");
-        getContentPane().add(aCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
+        jPanel1.add(aCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 50, -1));
 
         jLabel10.setText("Trabajadores");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
         jLabel11.setText("Estado");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
 
         jLabel12.setText("Estado");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
 
         jLabel13.setText("Faltas");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
 
         jLabel14.setText("Almacén");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
         jLabel15.setText("Costos Operativos: ");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
 
         jLabel16.setText("Ganancias");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
         jLabel17.setText("Ganancia Neta: ");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
 
         jLabel18.setText("Ganancia Bruta: ");
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
 
         ePB1.setText("1");
-        getContentPane().add(ePB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 20, -1));
+        jPanel1.add(ePB1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 20, -1));
 
         ePB2.setText("0");
-        getContentPane().add(ePB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 20, -1));
+        jPanel1.add(ePB2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 70, -1));
 
         ePB3.setText("0");
-        getContentPane().add(ePB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 20, -1));
+        jPanel1.add(ePB3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 60, -1));
 
         mApple.setText("0");
-        getContentPane().add(mApple, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
+        jPanel1.add(mApple, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
         mE2.setText("\"estado\"");
-        getContentPane().add(mE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
+        jPanel1.add(mE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
 
         mE3.setText("\"estado\"");
-        getContentPane().add(mE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 80, -1));
+        jPanel1.add(mE3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 80, -1));
 
         mE4.setText("0");
-        getContentPane().add(mE4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 30, 20));
+        jPanel1.add(mE4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 30, 20));
 
         dFA1.setText("-");
         dFA1.addActionListener(new java.awt.event.ActionListener() {
@@ -390,7 +415,9 @@ public class DashboardApple extends javax.swing.JFrame {
                 dFA1ActionPerformed(evt);
             }
         });
-        getContentPane().add(dFA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        jPanel1.add(dFA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -541,6 +568,7 @@ public class DashboardApple extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel mApple;
     private javax.swing.JLabel mE;
     private javax.swing.JLabel mE2;
