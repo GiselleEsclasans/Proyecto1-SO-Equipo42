@@ -130,7 +130,6 @@ public class DashboardHP extends javax.swing.JFrame {
         eRAM = new javax.swing.JLabel();
         eFA = new javax.swing.JLabel();
         PenaljLabel = new javax.swing.JLabel();
-        aPB = new javax.swing.JLabel();
         PlacaBasejLabel = new javax.swing.JLabel();
         FuenteAlimjLabel = new javax.swing.JLabel();
         NodeComputadoras1 = new javax.swing.JLabel();
@@ -169,7 +168,7 @@ public class DashboardHP extends javax.swing.JFrame {
         ePB1 = new javax.swing.JLabel();
         EarningjLabel = new javax.swing.JLabel();
         ProfitjLabel = new javax.swing.JLabel();
-        mApple = new javax.swing.JLabel();
+        mHP = new javax.swing.JLabel();
         DirectorStatusjLabel = new javax.swing.JLabel();
         PMStatusjLabel = new javax.swing.JLabel();
         FaultsjLabel = new javax.swing.JLabel();
@@ -182,7 +181,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         NodeComputadoras.setText("Computador con tarjeta gráfica:");
-        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 190, 20));
+        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 20));
 
         jLabel2.setText("Placa Base");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
@@ -209,7 +208,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(Cost, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 90, -1));
 
         cG.setText("0");
-        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 50, -1));
+        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
 
         eRAM.setText("1");
         getContentPane().add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 10, -1));
@@ -218,7 +217,7 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(eFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 10, -1));
 
         PenaljLabel.setText("0");
-        getContentPane().add(PenaljLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 120, -1));
+        getContentPane().add(PenaljLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 80, -1));
 
         PlacaBasejLabel.setText("0 / 25");
         getContentPane().add(PlacaBasejLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 50, -1));
@@ -227,13 +226,13 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(FuenteAlimjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
 
         NodeComputadoras1.setText("Computador Estándar:");
-        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 120, 20));
+        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
 
         RAMjLabel.setText("0 / 55");
         getContentPane().add(RAMjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
 
         cE.setText("0");
-        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 50, -1));
+        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
 
         jLabel20.setText("Director");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
@@ -398,13 +397,13 @@ public class DashboardHP extends javax.swing.JFrame {
         getContentPane().add(mHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
         DirectorStatusjLabel.setText("\"estado\"");
-        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 370, -1));
+        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
 
         PMStatusjLabel.setText("\"estado\"");
-        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 370, -1));
+        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 80, -1));
 
         FaultsjLabel.setText("0");
-        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 130, 20));
+        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 30, 20));
 
         dFA1.setText("-");
         dFA1.addActionListener(new java.awt.event.ActionListener() {
@@ -508,7 +507,7 @@ public class DashboardHP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CPUjLabel;
-    private javax.swing.JLabel CostsjLabel;
+    private javax.swing.JLabel Cost;
     private javax.swing.JLabel DirectorStatusjLabel;
     private javax.swing.JLabel EarningjLabel;
     private javax.swing.JLabel FaultsjLabel;
@@ -563,6 +562,6 @@ public class DashboardHP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel mApple;
+    private javax.swing.JLabel mHP;
     // End of variables declaration//GEN-END:variables
 }
