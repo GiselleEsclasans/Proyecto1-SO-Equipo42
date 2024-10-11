@@ -5,6 +5,9 @@
 package Interfaces;
 
 import Classes.Company;
+import Classes.Employee;
+import Classes.Storage;
+import DataStructure.Data;
 
 /**
  *
@@ -37,6 +40,43 @@ public class DashboardApple extends javax.swing.JFrame {
     public void updateGraphicComputerCount(int count) {
         cG.setText(String.valueOf(count));
     }
+    
+    public void updateStorageCapacity(Storage[] storages) {
+        for (int i = 0; i < storages.length; i++) {
+            String storageType = Data.producerTypes[i];
+            int currentCapacity = storages[i].getCurrentCapacity();
+            int maxCapacity = storages[i].getCapacity();
+            // Actualizar la interfaz gráfica con la información correspondiente
+            // Por ejemplo:
+            if (i == 0) {
+                aPB.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 1) {
+                aCPU.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 2) {
+                aRAM.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 3) {
+                aFA.setText(currentCapacity + " / " + maxCapacity);
+            } else if (i == 4) {
+                aTG.setText(currentCapacity + " / " + maxCapacity);
+            }
+        }
+    }
+
+    public void updateWorkerCount(Employee[] employees) {
+        int[] workerCounts = new int[6];
+        for (Employee employee : employees) {
+            workerCounts[employee.getType()]++;
+        }
+        // Actualizar la interfaz gráfica con la información correspondiente
+        // Por ejemplo:
+        ePB.setText(String.valueOf(workerCounts[0]));
+        eCPU.setText(String.valueOf(workerCounts[1]));
+        eRAM.setText(String.valueOf(workerCounts[2]));
+        eFA.setText(String.valueOf(workerCounts[3]));
+        aPB.setText(String.valueOf(workerCounts[4]));
+        eE.setText(String.valueOf(workerCounts[5]));
+    }
+    
     
     
     
@@ -72,7 +112,7 @@ public class DashboardApple extends javax.swing.JFrame {
         aTG = new javax.swing.JLabel();
         cE = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        eTG = new javax.swing.JLabel();
+        eE = new javax.swing.JLabel();
         aFA = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -84,7 +124,7 @@ public class DashboardApple extends javax.swing.JFrame {
         iRAM = new javax.swing.JButton();
         iE = new javax.swing.JButton();
         iCPU = new javax.swing.JButton();
-        eTG1 = new javax.swing.JLabel();
+        eTG = new javax.swing.JLabel();
         iTG = new javax.swing.JButton();
         dTG = new javax.swing.JButton();
         dPB = new javax.swing.JButton();
@@ -176,8 +216,8 @@ public class DashboardApple extends javax.swing.JFrame {
         jLabel20.setText("Director");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
 
-        eTG.setText("1");
-        getContentPane().add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
+        eE.setText("1");
+        getContentPane().add(eE, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 10, -1));
 
         aFA.setText("0 / 0 ");
         getContentPane().add(aFA, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 50, -1));
@@ -242,8 +282,8 @@ public class DashboardApple extends javax.swing.JFrame {
         });
         getContentPane().add(iCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
-        eTG1.setText("1");
-        getContentPane().add(eTG1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 10, -1));
+        eTG.setText("1");
+        getContentPane().add(eTG, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 10, -1));
 
         iTG.setText("+");
         iTG.addActionListener(new java.awt.event.ActionListener() {
@@ -362,51 +402,80 @@ public class DashboardApple extends javax.swing.JFrame {
     }//GEN-LAST:event_HPActionPerformed
 
     private void iFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iFAActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(3, 1);
+        updateWorkerCount(apple.getEmployees());
+        eFA.setText(String.valueOf(apple.getEmployeeCount(3)));
+        
     }//GEN-LAST:event_iFAActionPerformed
 
     private void iPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iPBActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(0, 1);
+        updateWorkerCount(apple.getEmployees());
+        ePB1.setText(String.valueOf(apple.getEmployeeCount(0)));
     }//GEN-LAST:event_iPBActionPerformed
 
     private void iRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iRAMActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(2, 1);
+        updateWorkerCount(apple.getEmployees());
+        eRAM.setText(String.valueOf(apple.getEmployeeCount(2)));
     }//GEN-LAST:event_iRAMActionPerformed
 
     private void iEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iEActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(5, 1);
+        updateWorkerCount(apple.getEmployees());
+    eE.setText(String.valueOf(apple.getEmployeeCount(5)));
     }//GEN-LAST:event_iEActionPerformed
 
     private void iCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCPUActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(1, 1);
+        updateWorkerCount(apple.getEmployees());
+    eCPU.setText(String.valueOf(apple.getEmployeeCount(1)));
     }//GEN-LAST:event_iCPUActionPerformed
 
     private void iTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iTGActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(4, 1);
+        updateWorkerCount(apple.getEmployees());
+    eTG.setText(String.valueOf(apple.getEmployeeCount(4)));
     }//GEN-LAST:event_iTGActionPerformed
 
     private void dTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dTGActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(4, -1);
+       updateWorkerCount(apple.getEmployees());
+    eTG.setText(String.valueOf(apple.getEmployeeCount(4)));
     }//GEN-LAST:event_dTGActionPerformed
 
     private void dPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dPBActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(0, -1);
+
+    updateWorkerCount(apple.getEmployees());
+    ePB1.setText(String.valueOf(apple.getEmployeeCount(0)));
     }//GEN-LAST:event_dPBActionPerformed
 
     private void dRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dRAMActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(2, -1);
+        updateWorkerCount(apple.getEmployees());
+    eRAM.setText(String.valueOf(apple.getEmployeeCount(2)));
+      
     }//GEN-LAST:event_dRAMActionPerformed
 
     private void dEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dEActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(5, -1);
+        updateWorkerCount(apple.getEmployees());
+    eE.setText(String.valueOf(apple.getEmployeeCount(5)));
     }//GEN-LAST:event_dEActionPerformed
 
     private void dCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dCPUActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(1, -1);
+        updateWorkerCount(apple.getEmployees());
+    eCPU.setText(String.valueOf(apple.getEmployeeCount(1)));
     }//GEN-LAST:event_dCPUActionPerformed
 
     private void dFA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dFA1ActionPerformed
-        // TODO add your handling code here:
+        apple.adjustEmployeeCount(3, -1);
+        
+    
+    updateWorkerCount(apple.getEmployees());
+        eFA.setText(String.valueOf(apple.getEmployeeCount(3)));
     }//GEN-LAST:event_dFA1ActionPerformed
 
   
@@ -437,6 +506,7 @@ public class DashboardApple extends javax.swing.JFrame {
     private javax.swing.JButton dRAM;
     private javax.swing.JButton dTG;
     private javax.swing.JLabel eCPU;
+    private javax.swing.JLabel eE;
     private javax.swing.JLabel eFA;
     private javax.swing.JLabel ePB;
     private javax.swing.JLabel ePB1;
@@ -444,7 +514,6 @@ public class DashboardApple extends javax.swing.JFrame {
     private javax.swing.JLabel ePB3;
     private javax.swing.JLabel eRAM;
     private javax.swing.JLabel eTG;
-    private javax.swing.JLabel eTG1;
     private javax.swing.JButton iCPU;
     private javax.swing.JButton iE;
     private javax.swing.JButton iFA;

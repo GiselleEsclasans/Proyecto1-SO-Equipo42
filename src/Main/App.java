@@ -38,8 +38,8 @@ public class App {
         Inicio inicio = new Inicio(hp, apple);
         hp.distributeEmployees();
         apple.distributeEmployees();
-//        hp.startWork();
-//        apple.startWork();
+        hp.startWork();
+        apple.startWork();
         inicio.setVisible(true);
     }
 }

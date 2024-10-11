@@ -109,7 +109,8 @@ public class Company {
             }
         }
     }
-
+    
+    
     public void startWork() {
        
         for (Employee employee : employees) {
@@ -153,18 +154,117 @@ public void incrementGraphicComputerCount() {
         if (dApple != null) {
             dApple.updateComputerCount(this.getComputerCount());
             dApple.updateGraphicComputerCount(this.getGraphicComputerCount());
+         
         }
     } else {
         if (dHP != null) {
             dHP.updateComputerCount(this.getComputerCount());
             dHP.updateGraphicComputerCount(this.getGraphicComputerCount());
+       
         }
     }
 }
   
+   
     
   
+   public void adjustEmployeeCount(int type, int amount) {
+    if (type < 0 || type >= 6) {
+        System.out.println("Tipo de empleado inválido");
+        return;
+    }
+
+    int currentCount = 0;
+    for (Employee employee : employees) {
+        if (employee != null && employee.getType() == type) {
+            currentCount++;
+        }
+    }
+
+    int newCount = currentCount + amount;
+
+    if (newCount < 1) {
+        System.out.println("No se puede tener menos de 1 empleado en un tipo de empleado");
+        return;
+    }
+
+    int totalEmployeesCount = 0;
+    for (Employee employee : employees) {
+        if (employee != null) {
+            totalEmployeesCount++;
+        }
+    }
+
+    if (totalEmployeesCount + amount > totalEmployees) {
+        System.out.println("No se puede superar el máximo de empleados en la compañía");
+        return;
+    }
+
+    if (amount > 0) {
+        // Agregar empleados
+        for (int i = 0; i < amount; i++) {
+            Storage storage = (type < 5) ? storages[type] : null;
+            Employee employee = new Employee(this, employees.length, type, 0, 0, storage, new Semaphore(1));
+            // Buscar el primer espacio disponible en el arreglo
+            int index = 0;
+            while (index < employees.length && employees[index] != null) {
+                index++;
+            }
+            if (index < employees.length) {
+                employees[index] = employee;
+                employee.start();
+            } else {
+                // Si no hay espacio disponible, aumentar el tamaño del arreglo
+                Employee[] newEmployees = new Employee[employees.length + 1];
+                System.arraycopy(employees, 0, newEmployees, 0, employees.length);
+                newEmployees[employees.length] = employee;
+                employees = newEmployees;
+                employee.start();
+            }
+        }
+    } else if (amount < 0) {
+        // Restar empleados
+        int count = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null && employees[i].getType() == type) {
+                employees[i].interrupt();
+                employees[i] = null;
+                count++;
+                if (count == -amount) {
+                    break;
+                }
+            }
+        }
+        // Reorganizar el arreglo para eliminar valores null
+        int newIndex = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                employees[newIndex] = employees[i];
+                newIndex++;
+            }
+        }
+        // Reducir el tamaño del arreglo si es necesario
+        if (newIndex < employees.length) {
+            Employee[] newEmployees = new Employee[newIndex];
+            System.arraycopy(employees, 0, newEmployees, 0, newIndex);
+            employees = newEmployees;
+        }
+    }
+
+    printEmployeeCount(type);
+}
   
+    public void printEmployeeCount(int type) {
+    int count = 0;
+    if (employees != null) {
+        for (Employee employee : employees) {
+            if (employee != null && employee.getType() == type) {
+                count++;
+            }
+        }
+    }
+    System.out.println("Hay " + count + " empleados de tipo " + type + " actualmente.");
+}
   
     
     public int getComputerCount() {
@@ -182,16 +282,25 @@ public void incrementGraphicComputerCount() {
     
     
     
-  
+  public int getEmployeeCount(int type) {
+    int count = 0;
+    for (Employee employee : employees) {
+        if (employee != null && employee.getType() == type) {
+            count++;
+        }
+    }
+    return count;
+}
 
 
 
-    public Employee[] getEmployees() {
-        return employees;
+   
+    public Storage[] getStorages() {
+        return this.storages;
     }
 
-    public Storage[] getStorages() {
-        return storages;
+    public Employee[] getEmployees() {
+        return this.employees;
     }
     
     public ProjectManager getProjectManager() {
@@ -203,18 +312,19 @@ public void incrementGraphicComputerCount() {
     }
 
     public void printEmployeeCounts() {
-        int[] employeeCounts = new int[5]; // Contadores de empleados por tipo
+    int[] employeeCounts = new int[6]; // Contadores de empleados por tipo
 
-        // Contar los empleados por tipo
-        for (Employee employee : this.employees) {
-            employeeCounts[employee.getType()]++;
-        }
-
-        // Imprimir los contadores
-        for (int i = 0; i < 5; i++) {
-            System.out.println("Tipo " + i + ": " + employeeCounts[i] + " empleados");
-        }
+    // Contar los empleados por tipo
+    for (Employee employee : this.employees) {
+        employeeCounts[employee.getType()]++;
     }
+
+    // Imprimir los contadores
+        System.out.println("\n");
+    for (int i = 0; i < employeeCounts.length; i++) {
+        System.out.println("Tipo " + i + ": " + employeeCounts[i] + " empleados");
+    }
+}
 
     /**
      * @return the graphicComputerCount
