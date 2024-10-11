@@ -17,13 +17,13 @@ import java.util.logging.Logger;
  *
  * @author andresimery
  */
-public class TxtDataHP extends javax.swing.JFrame {
+public class TxtData extends javax.swing.JFrame {
 
     private Inicio inicio;
     /**
      * Creates new form TxtData
      */
-    public TxtDataHP(Inicio inicio) {
+    public TxtData(Inicio inicio) {
         initComponents();
         this.inicio = inicio;
         this.loadFromFile();
@@ -34,24 +34,24 @@ public class TxtDataHP extends javax.swing.JFrame {
     private void saveToFile() {
         String dayDuration = dayDurationTextField.getText(); // Duración de un día
         String daysLeft = daysLeftTextField.getText(); // Días entre entregas
-        String placaBase = PlacaBaseTextField.getText(); // Cantidad inicial de trabajadores tipo Placa Base
-        String cpu = CPUTextField.getText(); // Cantidad inicial de trabajadores tipo CPU
-        String ramMemory = RamMemoryTextField.getText(); // Cantidad inicial de trabajadores tipo RAM
-        String fuenteA = FuenteATextField.getText(); // Cantidad inicial de trabajadores tipo Fuente de Alimentación
-        String assemblers = AssemblersTextField.getText(); // Cantidad inicial de ensambladores
+//        String placaBase = PlacaBaseTextField.getText(); // Cantidad inicial de trabajadores tipo Placa Base
+//        String cpu = CPUTextField.getText(); // Cantidad inicial de trabajadores tipo CPU
+//        String ramMemory = RamMemoryTextField.getText(); // Cantidad inicial de trabajadores tipo RAM
+//        String fuenteA = FuenteATextField.getText(); // Cantidad inicial de trabajadores tipo Fuente de Alimentación
+//        String assemblers = AssemblersTextField.getText(); // Cantidad inicial de ensambladores
 
         try {
-            File file = new File("./src/Public/settingsHP.txt");
+            File file = new File("./src/Public/settingsApple.txt");
             System.out.println("Ruta absoluta del archivo: " + file.getAbsolutePath());
             
             FileWriter writer = new FileWriter(file);
             writer.write("Duracion del dia (segundos): " + dayDuration + "\n");
             writer.write("Dias para entrega: " + daysLeft + "\n");
-            writer.write("Trabajadores tipo Placa Base: " + placaBase + "\n");
-            writer.write("Trabajadores tipo CPU: " + cpu + "\n");
-            writer.write("Trabajadores tipo RAM: " + ramMemory + "\n");
-            writer.write("Trabajadores tipo Fuente de Alimentacion: " + fuenteA + "\n");
-            writer.write("Ensambladores: " + assemblers + "\n");
+//            writer.write("Trabajadores tipo Placa Base: " + placaBase + "\n");
+//            writer.write("Trabajadores tipo CPU: " + cpu + "\n");
+//            writer.write("Trabajadores tipo RAM: " + ramMemory + "\n");
+//            writer.write("Trabajadores tipo Fuente de Alimentacion: " + fuenteA + "\n");
+//            writer.write("Ensambladores: " + assemblers + "\n");
             writer.close();
             System.out.println("Parámetros guardados correctamente.");
         } catch (IOException e) {
@@ -62,7 +62,7 @@ public class TxtDataHP extends javax.swing.JFrame {
     
     public void loadFromFile() {
         try {
-            File file = new File("./src/Public/settingsHP.txt");
+            File file = new File("./src/Public/settingsApple.txt");
             
 //            if (!file.exists()) {
 ////                file.getParentFile().mkdirs(); // Crea los directorios necesarios si no existen
@@ -93,26 +93,26 @@ public class TxtDataHP extends javax.swing.JFrame {
                         daysLeftTextField.setText(parameterValue);
                         Data.totalDays = Integer.parseInt(parameterValue);
                         break;
-                    case "Trabajadores tipo Placa Base":
-                        PlacaBaseTextField.setText(parameterValue);
-                        Data.workerCounts[0] = Integer.parseInt(parameterValue);
-                        break;
-                    case "Trabajadores tipo CPU":
-                        CPUTextField.setText(parameterValue);
-                        Data.workerCounts[1] = Integer.parseInt(parameterValue);
-                        break;
-                    case "Trabajadores tipo RAM":
-                        RamMemoryTextField.setText(parameterValue);
-                        Data.workerCounts[2] = Integer.parseInt(parameterValue);
-                        break;
-                    case "Trabajadores tipo Fuente de Alimentacion":
-                        FuenteATextField.setText(parameterValue);
-                        Data.workerCounts[3] = Integer.parseInt(parameterValue);
-                        break;
-                    case "Ensambladores":
-                        AssemblersTextField.setText(parameterValue);
-                        Data.workerCounts[4] = Integer.parseInt(parameterValue);
-                        break;
+//                    case "Trabajadores tipo Placa Base":
+//                        PlacaBaseTextField.setText(parameterValue);
+//                        Data.workerCounts[0] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo CPU":
+//                        CPUTextField.setText(parameterValue);
+//                        Data.workerCounts[1] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo RAM":
+//                        RamMemoryTextField.setText(parameterValue);
+//                        Data.workerCounts[2] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Trabajadores tipo Fuente de Alimentacion":
+//                        FuenteATextField.setText(parameterValue);
+//                        Data.workerCounts[3] = Integer.parseInt(parameterValue);
+//                        break;
+//                    case "Ensambladores":
+//                        AssemblersTextField.setText(parameterValue);
+//                        Data.workerCounts[4] = Integer.parseInt(parameterValue);
+//                        break;
                     default:
                         System.out.println("Parámetro desconocido: " + parameterName);
                         break;
@@ -126,7 +126,7 @@ public class TxtDataHP extends javax.swing.JFrame {
             e.printStackTrace();
         } 
 //        catch (IOException ex) {
-//            Logger.getLogger(TxtDataHP.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(TxtDataApple.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
 
@@ -147,19 +147,8 @@ public class TxtDataHP extends javax.swing.JFrame {
         dayDurationTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        PlacaBaseTextField = new javax.swing.JTextField();
         dayDurationLabel1 = new javax.swing.JLabel();
-        dayDurationLabel2 = new javax.swing.JLabel();
-        dayDurationLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         daysLeftTextField = new javax.swing.JTextField();
-        AssemblersTextField = new javax.swing.JTextField();
-        CPUTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        RamMemoryTextField = new javax.swing.JTextField();
-        FuenteATextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,11 +161,11 @@ public class TxtDataHP extends javax.swing.JFrame {
                 MenuButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
+        jPanel1.add(MenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
         TitleLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TitleLabel.setText("Data para el TXT HP");
+        TitleLabel.setText("Data para el TXT Apple");
         jPanel1.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 230, -1));
 
         dayDurationLabel.setText("Duración en segundos de un día:");
@@ -197,26 +186,8 @@ public class TxtDataHP extends javax.swing.JFrame {
         jLabel2.setText("días");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, 20));
 
-        PlacaBaseTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        PlacaBaseTextField.setText("5");
-        PlacaBaseTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PlacaBaseTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(PlacaBaseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 40, -1));
-
         dayDurationLabel1.setText("Cantidad de días entre entregas:");
         jPanel1.add(dayDurationLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-
-        dayDurationLabel2.setText("Cantidad de productores de:");
-        jPanel1.add(dayDurationLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
-
-        dayDurationLabel3.setText("Ensambladores:");
-        jPanel1.add(dayDurationLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        jLabel4.setText("Placas base:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 20));
 
         daysLeftTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         daysLeftTextField.setText("30");
@@ -227,52 +198,7 @@ public class TxtDataHP extends javax.swing.JFrame {
         });
         jPanel1.add(daysLeftTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 60, -1));
 
-        AssemblersTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        AssemblersTextField.setText("5");
-        AssemblersTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AssemblersTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(AssemblersTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 40, -1));
-
-        CPUTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        CPUTextField.setText("5");
-        CPUTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CPUTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CPUTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 40, -1));
-
-        jLabel5.setText("CPU:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
-
-        jLabel6.setText("Memoria Ram:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, 20));
-
-        RamMemoryTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        RamMemoryTextField.setText("5");
-        RamMemoryTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RamMemoryTextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(RamMemoryTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 40, -1));
-
-        FuenteATextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        FuenteATextField.setText("5");
-        FuenteATextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FuenteATextFieldActionPerformed(evt);
-            }
-        });
-        jPanel1.add(FuenteATextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 40, -1));
-
-        jLabel7.setText("Fuente de Alimentacion:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, 20));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,29 +213,9 @@ public class TxtDataHP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dayDurationTextFieldActionPerformed
 
-    private void PlacaBaseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlacaBaseTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PlacaBaseTextFieldActionPerformed
-
     private void daysLeftTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysLeftTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_daysLeftTextFieldActionPerformed
-
-    private void AssemblersTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssemblersTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AssemblersTextFieldActionPerformed
-
-    private void CPUTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CPUTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CPUTextFieldActionPerformed
-
-    private void RamMemoryTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RamMemoryTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RamMemoryTextFieldActionPerformed
-
-    private void FuenteATextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuenteATextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FuenteATextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,25 +253,14 @@ public class TxtDataHP extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AssemblersTextField;
-    private javax.swing.JTextField CPUTextField;
-    private javax.swing.JTextField FuenteATextField;
     private javax.swing.JButton MenuButton;
-    private javax.swing.JTextField PlacaBaseTextField;
-    private javax.swing.JTextField RamMemoryTextField;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JLabel dayDurationLabel;
     private javax.swing.JLabel dayDurationLabel1;
-    private javax.swing.JLabel dayDurationLabel2;
-    private javax.swing.JLabel dayDurationLabel3;
     private javax.swing.JTextField dayDurationTextField;
     private javax.swing.JTextField daysLeftTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
