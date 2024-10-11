@@ -36,7 +36,6 @@ public class DashboardApple extends javax.swing.JFrame {
     
     public void showInfo() {
         this.apple.setWindowApple(this);
-        this.apple.printApple();
     }
     
     public JLabel getEpb2() {
