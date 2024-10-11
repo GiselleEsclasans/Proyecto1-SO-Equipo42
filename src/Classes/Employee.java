@@ -71,17 +71,16 @@ public class Employee extends Thread {
     @Override
     public void run() {
         while (true) {
-            
             try {
                 // Trabajar durante un día
 
                 earnSalary();
-                //System.out.println(this.companyName + " Trabajador: "+this.id+" ha ganado: "+this.totalSalary+"$");
                 work();
-              
                 sleep(this.dayDuration);
             } catch (InterruptedException ex) {
-                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+                Thread.currentThread().interrupt(); // Reestablecer la bandera de interrupción
+                System.out.println("Hilo interrumpido");
+                return;
             }
         }
     }

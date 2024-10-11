@@ -235,7 +235,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="eTG">
+    <Component class="javax.swing.JLabel" name="eE">
       <Properties>
         <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
@@ -373,7 +373,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="eTG1">
+    <Component class="javax.swing.JLabel" name="eTG">
       <Properties>
         <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
