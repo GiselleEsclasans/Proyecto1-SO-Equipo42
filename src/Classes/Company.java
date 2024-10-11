@@ -8,6 +8,7 @@ import DataStructure.Data;
 import Interfaces.DashboardApple;
 import Interfaces.DashboardHP;
 import java.util.concurrent.Semaphore;
+import javax.swing.JFrame;
 
 public class Company {
     private String company;
@@ -25,6 +26,7 @@ public class Company {
     private ProjectManager projectManager;
     private Director director;
     private int daysLeft;
+//    private JFrame window;
   
     private static Storage storage;
     private Semaphore mutex;
@@ -61,11 +63,11 @@ public class Company {
 
         this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
 
-        if (company.equals("APPLE")) {
-        this.dApple = new DashboardApple(this, null);
-        } else if (company.equals("HP")) {
-            this.dHP = new DashboardHP(this, null);
-        }
+//        if (company.equals("APPLE")) {
+//        this.dApple = new DashboardApple(this, null);
+//        } else if (company.equals("HP")) {
+//            this.dHP = new DashboardHP(this, null);
+//        }
 
         
         // Inicializar los almacenes con capacidades fijas
@@ -345,6 +347,38 @@ public void incrementGraphicComputerCount() {
      */
     public void setAssemblerCount(int assemblerCount) {
         this.assemblerCount = assemblerCount;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardApple getWindowApple() {
+        return this.dApple;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+    
+    /**
+     * @return the DashboardApple interface
+     */
+    public DashboardHP getWindowHP() {
+        return this.dHP;
+    }
+    
+    /**
+     * @param dApple the DashboardApple interface
+     */
+    public void setWindowHP(DashboardHP dHP) {
+        this.dHP = dHP;
+    }
+    
+    public void printApple() {
+        this.getWindowApple().getEpb2().setText("AQUIIIII");
     }
     
 }
