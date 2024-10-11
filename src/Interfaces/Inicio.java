@@ -38,6 +38,10 @@ public class Inicio extends javax.swing.JFrame {
         if (this.hp == null && this.apple == null) {
             hp = new Company("HP", 20, Data.daysLeft);
             apple = new Company("APPLE", 15, Data.daysLeft);
+            hp.distributeEmployees();
+            apple.distributeEmployees();
+            hp.startWork();
+            apple.startWork();
         }
         this.hp = hp;
         this.apple = apple;

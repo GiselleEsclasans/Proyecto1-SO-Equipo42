@@ -30,11 +30,11 @@ public class App {
     }
 
     public void start() {
-        Inicio inicio = new Inicio(hp, apple);
-        hp.distributeEmployees();
-        apple.distributeEmployees();
-        hp.startWork();
-        apple.startWork();
+        Inicio inicio = new Inicio(null, null);
+//        hp.distributeEmployees();
+//        apple.distributeEmployees();
+//        hp.startWork();
+//        apple.startWork();
         inicio.setVisible(true);
     }
 }
