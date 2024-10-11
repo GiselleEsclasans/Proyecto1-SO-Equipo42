@@ -384,25 +384,25 @@ public class DashboardHP extends javax.swing.JFrame {
     private void iPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iPBActionPerformed
         hp.adjustEmployeeCount(0, 1);
         updateWorkerCount(hp.getEmployees());
-        ePB1.setText(String.valueOf(hp.getEmployeeCount(3)));
+        ePB1.setText(String.valueOf(hp.getEmployeeCount(0)));
     }//GEN-LAST:event_iPBActionPerformed
 
     private void iRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iRAMActionPerformed
         hp.adjustEmployeeCount(2, 1);
         updateWorkerCount(hp.getEmployees());
-        eRAM.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eRAM.setText(String.valueOf(hp.getEmployeeCount(2)));
     }//GEN-LAST:event_iRAMActionPerformed
 
     private void iEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iEActionPerformed
         hp.adjustEmployeeCount(5, 1);
         updateWorkerCount(hp.getEmployees());
-        eE.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eE.setText(String.valueOf(hp.getEmployeeCount(5)));
     }//GEN-LAST:event_iEActionPerformed
 
     private void iCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCPUActionPerformed
         hp.adjustEmployeeCount(1, 1);
         updateWorkerCount(hp.getEmployees());
-        eCPU.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eCPU.setText(String.valueOf(hp.getEmployeeCount(1)));
     }//GEN-LAST:event_iCPUActionPerformed
 
     private void iTGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iTGActionPerformed
@@ -420,25 +420,25 @@ public class DashboardHP extends javax.swing.JFrame {
     private void dPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dPBActionPerformed
         hp.adjustEmployeeCount(0, -1);
         updateWorkerCount(hp.getEmployees());
-        ePB1.setText(String.valueOf(hp.getEmployeeCount(3)));
+        ePB1.setText(String.valueOf(hp.getEmployeeCount(0)));
     }//GEN-LAST:event_dPBActionPerformed
 
     private void dRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dRAMActionPerformed
         hp.adjustEmployeeCount(2,-1);
         updateWorkerCount(hp.getEmployees());
-        eRAM.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eRAM.setText(String.valueOf(hp.getEmployeeCount(2)));
     }//GEN-LAST:event_dRAMActionPerformed
 
     private void dEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dEActionPerformed
         hp.adjustEmployeeCount(5, -1);
         updateWorkerCount(hp.getEmployees());
-        eE.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eE.setText(String.valueOf(hp.getEmployeeCount(5)));
     }//GEN-LAST:event_dEActionPerformed
 
     private void dCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dCPUActionPerformed
         hp.adjustEmployeeCount(1, -1);
         updateWorkerCount(hp.getEmployees());
-        eCPU.setText(String.valueOf(hp.getEmployeeCount(3)));
+        eCPU.setText(String.valueOf(hp.getEmployeeCount(1)));
     }//GEN-LAST:event_dCPUActionPerformed
 
     private void dFA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dFA1ActionPerformed
