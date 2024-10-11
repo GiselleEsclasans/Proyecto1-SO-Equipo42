@@ -74,7 +74,7 @@ public class Inicio extends javax.swing.JFrame {
                         Data.dayDuration = Integer.parseInt(parameterValue) * 1000; // Convertir a milisegundos
                         break;
                     case "Dias para entrega":
-                        Data.totalDays = Integer.parseInt(parameterValue);
+                        Data.daysLeft = Integer.parseInt(parameterValue);
                         break;
 //                    case "Trabajadores tipo Placa Base":
 //                        PlacaBaseTextField.setText(parameterValue);
