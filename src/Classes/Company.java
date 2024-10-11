@@ -8,7 +8,6 @@ import DataStructure.Data;
 import Interfaces.DashboardApple;
 import Interfaces.DashboardHP;
 import java.util.concurrent.Semaphore;
-import javax.swing.JFrame;
 
 public class Company {
     private String company;
@@ -374,9 +373,9 @@ public void updateComputerCounts() {
         dApple.updateProfitSum(this.profit);
         dApple.updateCostsSum(this.cost);
     } else {
-        dHP.updateEarningSum(this.earning);
-        dHP.updateProfitSum(this.profit);
-        dHP.updateCostsSum(this.cost);
+//        dHP.updateEarningSum(this.earning);
+//        dHP.updateProfitSum(this.profit);
+//        dHP.updateCostsSum(this.cost);
     }
       
         System.out.println(this.earning);
@@ -822,6 +821,8 @@ public void updateComputerCounts() {
      */
     public void setWindowApple(DashboardApple dApple) {
         this.dApple = dApple;
+        this.director.setWindowApple(dApple);
+        this.projectManager.setWindowApple(dApple);
     }
     
     /**
@@ -836,6 +837,8 @@ public void updateComputerCounts() {
      */
     public void setWindowHP(DashboardHP dHP) {
         this.dHP = dHP;
+        this.director.setWindowHP(dHP);
+        this.projectManager.setWindowHP(dHP);
     }
     
     public void printApple() {
