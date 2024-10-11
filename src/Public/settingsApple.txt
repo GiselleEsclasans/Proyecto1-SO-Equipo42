@@ -1,7 +1,2 @@
 Duracion del dia (segundos): 7
 Dias para entrega: 30
-Trabajadores tipo Placa Base: 2
-Trabajadores tipo CPU: 5
-Trabajadores tipo RAM: 5
-Trabajadores tipo Fuente de Alimentacion: 5
-Ensambladores: 1
