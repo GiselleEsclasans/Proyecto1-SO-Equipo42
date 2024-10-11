@@ -10,6 +10,8 @@ package Classes;
  */
 
 import DataStructure.Data;
+import Interfaces.DashboardApple;
+import Interfaces.DashboardHP;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +39,9 @@ public class Employee extends Thread {
     
     private int productionRate; // Tasa de producción del trabajador
     private int productionInterval; // Intervalo de producción del trabajador
+    
+    DashboardApple dApple;
+    DashboardHP dHP;
     
     
     public Employee(Company company, int id, int type, int days, int workDone, Storage workStorage, Semaphore m) {
@@ -78,6 +83,7 @@ public class Employee extends Thread {
                 
                 earnSalary();
                 work();
+                this.company.updateStorageCapacity();
                 
                 sleep(this.getDayDuration());
             } catch (InterruptedException ex) {
@@ -103,10 +109,12 @@ public class Employee extends Thread {
                     assemblePC();
                     this.setProductionInterval(Data.productionIntervals[0][this.getType()]);
                 } else {
+
                     this.getWorkStorage().addToStorage(this.getProductionRate(), this.getWorkStorage());
                     if (this.getCompanyName() == "HP") {
                         this.setProductionRate(Data.productionRates[0][this.getType()]);
                         this.setProductionInterval(Data.productionIntervals[0][this.getType()]);
+
                     } else {
                         this.setProductionRate(Data.productionRates[1][this.getType()]);
                         this.setProductionInterval(Data.productionIntervals[1][this.getType()]);

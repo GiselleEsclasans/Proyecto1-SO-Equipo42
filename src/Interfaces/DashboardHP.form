@@ -175,9 +175,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="aCPU">
+    <Component class="javax.swing.JLabel" name="PlacaBasejLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 / 0"/>
+        <Property name="text" type="java.lang.String" value="0 / 25"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -185,9 +185,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="aRAM">
+    <Component class="javax.swing.JLabel" name="FuenteAlimjLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 / 0"/>
+        <Property name="text" type="java.lang.String" value="0 / 35"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -205,9 +205,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="aTG">
+    <Component class="javax.swing.JLabel" name="RAMjLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 / 0"/>
+        <Property name="text" type="java.lang.String" value="0 / 55"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -245,9 +245,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="aFA">
+    <Component class="javax.swing.JLabel" name="TarjetasGraficasjLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 / 0 "/>
+        <Property name="text" type="java.lang.String" value="0 / 10"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -461,9 +461,9 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="aCPU1">
+    <Component class="javax.swing.JLabel" name="CPUjLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0 / 0"/>
+        <Property name="text" type="java.lang.String" value="0 / 20"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
