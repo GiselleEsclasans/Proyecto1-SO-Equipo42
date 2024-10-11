@@ -39,7 +39,7 @@ public class Director extends Thread {
     @Override
     public void run() {
         while (true) {
-            if (projectManager.getDaysLeft() == 0) {
+            if (getProjectManager().getDaysLeft() == 0) {
                 sendComputers();
                 break; // Sale del bucle si termina el trabajo
             } else {
@@ -50,7 +50,7 @@ public class Director extends Thread {
                 int randomHour = random.nextInt(24); // Hora aleatoria del día
 
                 try {
-                    sleep(randomHour * (this.dayDuration / 24)); // Simula el tiempo hasta la hora elegida
+                    sleep(randomHour * (this.getDayDuration() / 24)); // Simula el tiempo hasta la hora elegida
                     reviewProjectManager(); // Revisa el trabajo del PM
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -62,34 +62,136 @@ public class Director extends Thread {
     private void sendComputers() {
         //System.out.println(company + " Director enviando computadoras a distribuidoras...");
         try {
-            sleep(this.dayDuration); // Simula 24 horas en milisegundos
+            sleep(this.getDayDuration()); // Simula 24 horas en milisegundos
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         //System.out.println(company + " Director ha enviado las computadoras.");
-        projectManager.setDaysLeft(totalDays); // Reinicia el contador (ejemplo)
+        getProjectManager().setDaysLeft(getTotalDays()); // Reinicia el contador (ejemplo)
     }
 
     private void doAdministrativeWork() {
-        //System.out.println(company + " Director realizando labores administrativas...");
+        System.out.println(company + " Director realizando labores administrativas...");
         try {
-            sleep(this.dayDuration); // Simula el tiempo de trabajo administrativo
+            sleep(this.getDayDuration()); // Simula el tiempo de trabajo administrativo
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     private void reviewProjectManager() {
-        //System.out.println(company + " Director revisando el trabajo del Project Manager...");
+        System.out.println(company + " Director revisando el trabajo del Project Manager...");
 
-        if (projectManager.isWatchingAnime()) {
-            //System.out.println(company + " Director descubrió al Project Manager viendo anime!");
+        if (getProjectManager().isWatchingAnime()) {
+            System.out.println(company + " Director descubrió al Project Manager viendo anime!");
             // Cambiado para utilizar correctamente la referencia a projectManager
-            projectManager.deductSalary(100); // Descuenta $100 si está viendo anime
+            getProjectManager().deductSalary(100); // Descuenta $100 si está viendo anime
             System.out.println("################################################################################################");
         } else {
             //System.out.println(company + " Project Manager está trabajando.");
         }
+    }
+
+    /**
+     * @return the company
+     */
+    public String getCompany() {
+        return company;
+    }
+    
+    public void resetSalary() {
+    this.totalSalary = 0;
+}
+
+    /**
+     * @param company the company to set
+     */
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    /**
+     * @return the mutex
+     */
+    public Semaphore getMutex() {
+        return mutex;
+    }
+
+    /**
+     * @param mutex the mutex to set
+     */
+    public void setMutex(Semaphore mutex) {
+        this.mutex = mutex;
+    }
+
+    /**
+     * @return the salary
+     */
+    public int getSalary() {
+        return salary;
+    }
+
+    /**
+     * @param salary the salary to set
+     */
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    /**
+     * @return the totalSalary
+     */
+    public float getTotalSalary() {
+        return totalSalary;
+    }
+
+    /**
+     * @param totalSalary the totalSalary to set
+     */
+    public void setTotalSalary(float totalSalary) {
+        this.totalSalary = totalSalary;
+    }
+
+    /**
+     * @return the projectManager
+     */
+    public ProjectManager getProjectManager() {
+        return projectManager;
+    }
+
+    /**
+     * @param projectManager the projectManager to set
+     */
+    public void setProjectManager(ProjectManager projectManager) {
+        this.projectManager = projectManager;
+    }
+
+    /**
+     * @return the dayDuration
+     */
+    public int getDayDuration() {
+        return dayDuration;
+    }
+
+    /**
+     * @param dayDuration the dayDuration to set
+     */
+    public void setDayDuration(int dayDuration) {
+        this.dayDuration = dayDuration;
+    }
+
+    /**
+     * @return the totalDays
+     */
+    public int getTotalDays() {
+        return totalDays;
+    }
+
+    /**
+     * @param totalDays the totalDays to set
+     */
+    public void setTotalDays(int totalDays) {
+        this.totalDays = totalDays;
     }
 
 }
