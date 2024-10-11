@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import DataStructure.Data;
 import Interfaces.DashboardApple;
 import Interfaces.DashboardHP;
 import static java.lang.Thread.sleep;
@@ -23,6 +24,7 @@ public class ProjectManager extends Thread {
     private DashboardApple dApple;
     private DashboardHP dHP;
     private int faults;
+    private int totalDays;
     private float penalties;
 
     public ProjectManager(Company company, Semaphore m, int dayDuration, int daysLeft) {
@@ -34,30 +36,31 @@ public class ProjectManager extends Thread {
         this.watchingAnime = false; // Inicialmente no está viendo anime
         this.totalSalary = 0;
         this.faults = 0;
+        this.totalDays = Data.totalDays;
         this.penalties = 0;
         
     }
 
     @Override
     public void run() {
-        while (getDaysLeft() > 0) { // Mientras queden días para la entrega
+        while (true) { // Mientras queden días para la entrega
             try {
                 // Las primeras 16 horas del día
                 
                 
-                for (float t = 0; t < 16 * (dayDuration/24); t += 1 * (dayDuration/24)) { // Cada hora representa 0.5 en 30 minutos
+                for (float t = 0; t < 16 * (getDayDuration()/24); t += 1 * (getDayDuration()/24)) { // Cada hora representa 0.5 en 30 minutos
                     setWatchingAnime(true); // Está viendo anime
                     //System.out.println(this.companyName + " Project Manager viendo anime...");
                     
                     this.updateStatus("Project Manager viendo anime...");
                     earnSalary(); // Gana salario mientras ve anime
-                    sleep(30 * (dayDuration/1440)); // Simula 30 minutos
+                    sleep(30 * (getDayDuration()/1440)); // Simula 30 minutos
 
                     setWatchingAnime(false); // Ahora trabaja
                     //System.out.println(this.companyName + " Project Manager revisando proyecto...");
                     this.updateStatus("Project Manager revisando proyecto...");
                     earnSalary(); // Gana salario mientras trabaja
-                    sleep(30 * (dayDuration/1440)); // Simula 30 minutos
+                    sleep(30 * (getDayDuration()/1440)); // Simula 30 minutos
                   
                     
                 }
@@ -66,12 +69,20 @@ public class ProjectManager extends Thread {
                 // Últimas 8 horas del día
                 //System.out.println(this.companyName + " Project Manager actualizando días restantes...");
                 this.updateStatus("Project Manager actualizando días restantes...");
-                sleep(8 * (dayDuration/24)); // Simula 8 horas
+                sleep(8 * (getDayDuration()/24)); // Simula 8 horas
                 getCompany().calculateOperativeCost(); // Calcular el costo operativo al final del día
                 setDaysLeft(getDaysLeft() - 1); // Reduce el contador de días
                 //System.out.println(this.companyName + " Días restantes para entregar las computadoras: " + daysLeft);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (getDaysLeft() == 0) {
+            // En lugar de detenerse, reinicia el contador de días
+                setDaysLeft(getTotalDays());
+                getCompany().setDaysLeft(getTotalDays());
+                getCompany().setComputerCount(0);
+                getCompany().setGraphicComputerCount(0);
             }
         }
 
@@ -80,23 +91,23 @@ public class ProjectManager extends Thread {
     }
     
     public void updateStatus(String status) {
-        if (dApple != null || dHP != null) {
-            if (this.companyName == "APPLE") {
-                dApple.updatePMStatus(daysLeft + " días. " + status);
+        if (getdApple() != null || getdHP() != null) {
+            if (this.getCompanyName() == "APPLE") {
+                getdApple().updatePMStatus(getDaysLeft() + " días. " + status);
             } else {
-                dHP.updatePMStatus(daysLeft + " días. " + status);
+                getdHP().updatePMStatus(getDaysLeft() + " días. " + status);
             }
         }
     }
     
     public void updateFaultsAndPenalties() {
-        if (dApple != null || dHP != null) {
-            if (this.companyName == "APPLE") {
-                dApple.updatePMFaults(this.faults);
-                dApple.updatePMPenalties(this.penalties);
+        if (getdApple() != null || getdHP() != null) {
+            if (this.getCompanyName() == "APPLE") {
+                getdApple().updatePMFaults(this.getFaults());
+                getdApple().updatePMPenalties(this.getPenalties());
             } else {
-                dHP.updatePMFaults(this.faults);
-                dHP.updatePMPenalties(this.penalties);
+                getdHP().updatePMFaults(this.getFaults());
+                getdHP().updatePMPenalties(this.getPenalties());
             }
         }
     }
@@ -118,7 +129,7 @@ public class ProjectManager extends Thread {
     }
 
     public void resetSalary() {
-        this.totalSalary = 0;
+        this.setTotalSalary(0);
     }
 
     public void deductSalary(int amount) {
@@ -126,8 +137,8 @@ public class ProjectManager extends Thread {
             getMutex().acquire(); // Adquiere el semáforo antes de modificar el salario
             this.setTotalSalary(this.getTotalSalary() - amount); // Descuenta el salario
             //System.out.println(this.companyName + " Project Manager ha tenido un descuento de $ " + amount);
-            this.faults++;
-            this.penalties =- amount;
+            this.setFaults(this.getFaults() + 1);
+            this.setPenalties(- amount);
             updateFaultsAndPenalties();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -236,27 +247,97 @@ public class ProjectManager extends Thread {
      * @return the DashboardApple interface
      */
     public DashboardApple getWindowApple() {
-        return this.dApple;
+        return this.getdApple();
     }
     
     /**
      * @param dApple the DashboardApple interface
      */
     public void setWindowApple(DashboardApple dApple) {
-        this.dApple = dApple;
+        this.setdApple(dApple);
     }
     
     /**
      * @return the DashboardApple interface
      */
     public DashboardHP getWindowHP() {
-        return this.dHP;
+        return this.getdHP();
     }
     
     /**
      * @param dApple the DashboardApple interface
      */
     public void setWindowHP(DashboardHP dHP) {
+        this.setdHP(dHP);
+    }
+
+    /**
+     * @return the dApple
+     */
+    public DashboardApple getdApple() {
+        return dApple;
+    }
+
+    /**
+     * @param dApple the dApple to set
+     */
+    public void setdApple(DashboardApple dApple) {
+        this.dApple = dApple;
+    }
+
+    /**
+     * @return the dHP
+     */
+    public DashboardHP getdHP() {
+        return dHP;
+    }
+
+    /**
+     * @param dHP the dHP to set
+     */
+    public void setdHP(DashboardHP dHP) {
         this.dHP = dHP;
+    }
+
+    /**
+     * @return the faults
+     */
+    public int getFaults() {
+        return faults;
+    }
+
+    /**
+     * @param faults the faults to set
+     */
+    public void setFaults(int faults) {
+        this.faults = faults;
+    }
+
+    /**
+     * @return the totalDays
+     */
+    public int getTotalDays() {
+        return totalDays;
+    }
+
+    /**
+     * @param totalDays the totalDays to set
+     */
+    public void setTotalDays(int totalDays) {
+        this.totalDays = totalDays;
+    }
+
+    /**
+     * @return the penalties
+     */
+    public float getPenalties() {
+        return penalties;
+    }
+
+    /**
+     * @param penalties the penalties to set
+     */
+    public void setPenalties(float penalties) {
+        this.penalties = penalties;
     }
 }

@@ -85,7 +85,7 @@ public class Company {
 
 
         this.projectManager = new ProjectManager(this, this.getMutex(), Data.dayDuration, this.getDaysLeft());
-        this.director = new Director(this.getCompany(), this.getMutex(), this.getProjectManager());
+        this.director = new Director(this, this.getMutex(), this.getProjectManager());
 
     }
 
@@ -380,9 +380,9 @@ public void updateComputerCounts() {
         }
     }
       
-        System.out.println(this.earning);
-        System.out.println(this.cost);
-        System.out.println(this.profit);
+        //System.out.println(this.earning);
+        //System.out.println(this.cost);
+        //System.out.println(this.profit);
         
    }
     
