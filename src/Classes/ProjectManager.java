@@ -34,21 +34,26 @@ public class ProjectManager extends Thread {
         while (getDaysLeft() > 0) { // Mientras queden días para la entrega
             try {
                 // Las primeras 16 horas del día
-                for (int t = 0; t < 16; t += 0.5) { // Cada hora representa 0.5 en 30 minutos
+                
+                
+                for (float t = 0; t < 16 * (dayDuration/24); t += 1 * (dayDuration/24)) { // Cada hora representa 0.5 en 30 minutos
                     setWatchingAnime(true); // Está viendo anime
                     //System.out.println(this.companyName + " Project Manager viendo anime...");
                     earnSalary(); // Gana salario mientras ve anime
-                    sleep(getDayDuration() / 48); // Simula 30 minutos
+                    sleep(30 * (dayDuration/1440)); // Simula 30 minutos
 
                     setWatchingAnime(false); // Ahora trabaja
                     //System.out.println(this.companyName + " Project Manager revisando proyecto...");
                     earnSalary(); // Gana salario mientras trabaja
-                    sleep(getDayDuration() / 48); // Simula 30 minutos
+                    sleep(30 * (dayDuration/1440)); // Simula 30 minutos
+                  
+                    
                 }
+                
 
                 // Últimas 8 horas del día
                 //System.out.println(this.companyName + " Project Manager actualizando días restantes...");
-                sleep(getDayDuration() / 24 * 8); // Simula 8 horas
+                sleep(8 * (dayDuration/24)); // Simula 8 horas
                 getCompany().calculateOperativeCost(); // Calcular el costo operativo al final del día
                 setDaysLeft(getDaysLeft() - 1); // Reduce el contador de días
                 //System.out.println(this.companyName + " Días restantes para entregar las computadoras: " + daysLeft);
