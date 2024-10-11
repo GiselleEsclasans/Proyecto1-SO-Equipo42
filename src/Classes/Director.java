@@ -103,9 +103,9 @@ public class Director extends Thread {
     public void updateStatus(String status) {
         if (dApple != null || dHP != null) {
             if (this.company == "APPLE") {
-                dApple.updatePMStatus(status);
+                dApple.updateDirectorStatus(status);
             } else {
-                dHP.updatePMStatus(status);
+                dHP.updateDirectorStatus(status);
             }
         }
     }
