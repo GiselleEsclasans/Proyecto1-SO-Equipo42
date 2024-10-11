@@ -41,6 +41,10 @@ public class Company {
     private int graphicComputerCount;
     private int assemblerCount;
     
+    private int currentNormalComputers;
+    private int currentGraphicComputers;
+  
+    
     private int totalComputers;
     private int totalGraphipComputers;
     
@@ -59,6 +63,8 @@ public class Company {
 
         this.computerCount = 0;
         this.graphicComputerCount = 0;
+        this.currentNormalComputers = 0;
+        this.currentGraphicComputers = 0;
 
         this.daysLeft = daysLeft; // Inicializa días restantes (puedes ajustar este valor)
 
@@ -132,14 +138,16 @@ public class Company {
     
     public void incrementComputerCount() {
         this.setComputerCount(this.getComputerCount() + 1);
-    System.out.println("\n\n" + this.getCompany() + " Computadoras normales " + this.getComputerCount() + "\n");
+        this.currentNormalComputers++;
+    //System.out.println("\n\n" + this.getCompany() + " Computadoras normales " + this.getComputerCount() + "\n");
     this.updateDashboard();
    
 }   
 
 public void incrementGraphicComputerCount() {
     this.setGraphicComputerCount(this.getGraphicComputerCount() + 1);
-    System.out.println("\n\n" + this.getCompany() + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
+    this.currentGraphicComputers++;
+    //System.out.println("\n\n" + this.getCompany() + " Computadoras con gráficas " + this.getGraphicComputerCount() + "\n");
     this.updateDashboard();
    
 }
@@ -349,13 +357,16 @@ public void updateComputerCounts() {
     // Sumar el sueldo del project manager
     totalCost += getProjectManager().getTotalSalary();
 
-    this.setCost(totalCost);
+    cost += totalCost;
     int companyIndex = getCompany().equals("HP") ? 0 : 1;
-    this.setEarning(getEarning() + getComputerCount() * Data.profitTypeComputer[companyIndex][0] + getGraphicComputerCount() * Data.profitTypeComputer[companyIndex][1]);
+    this.setEarning(getEarning() + this.currentNormalComputers * Data.profitTypeComputer[companyIndex][0] + this.currentGraphicComputers * Data.profitTypeComputer[companyIndex][1]);
     
     if (this.getCost() > 0){
     this.setProfit(this.getEarning() - this.getCost());}
     this.resetSalaries();
+    
+    this.currentNormalComputers = 0;
+    this.currentGraphicComputers = 0;
     
     if (company == "APPLE") {
         dApple.updateEarningSum(this.earning);
