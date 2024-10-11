@@ -28,6 +28,7 @@ public class DashboardApple extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        
     }
     
     
@@ -75,6 +76,8 @@ public class DashboardApple extends javax.swing.JFrame {
         eFA.setText(String.valueOf(workerCounts[3]));
         aPB.setText(String.valueOf(workerCounts[4]));
         eE.setText(String.valueOf(workerCounts[5]));
+        
+        
     }
     
     
