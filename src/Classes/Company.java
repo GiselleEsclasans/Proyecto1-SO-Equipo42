@@ -357,6 +357,16 @@ public void updateComputerCounts() {
     if (this.getCost() > 0){
     this.setProfit(this.getEarning() - this.getCost());}
     this.resetSalaries();
+    
+    if (company == "APPLE") {
+        dApple.updateEarningSum(this.earning);
+        dApple.updateProfitSum(this.profit);
+        dApple.updateCostsSum(this.cost);
+    } else {
+        dHP.updateEarningSum(this.earning);
+        dHP.updateProfitSum(this.profit);
+        dHP.updateCostsSum(this.cost);
+    }
       
         System.out.println(this.earning);
         System.out.println(this.cost);
