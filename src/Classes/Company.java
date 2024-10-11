@@ -368,14 +368,16 @@ public void updateComputerCounts() {
     this.currentNormalComputers = 0;
     this.currentGraphicComputers = 0;
     
-    if (company == "APPLE") {
-        dApple.updateEarningSum(this.earning);
-        dApple.updateProfitSum(this.profit);
-        dApple.updateCostsSum(this.cost);
-    } else {
-//        dHP.updateEarningSum(this.earning);
-//        dHP.updateProfitSum(this.profit);
-//        dHP.updateCostsSum(this.cost);
+    if (dApple != null || dHP != null) {
+        if (company == "APPLE") {
+            dApple.updateEarningSum(this.earning);
+            dApple.updateProfitSum(this.profit);
+            dApple.updateCostsSum(this.cost);
+        } else {
+            dHP.updateEarningSum(this.earning);
+            dHP.updateProfitSum(this.profit);
+            dHP.updateCostsSum(this.cost);
+        }
     }
       
         System.out.println(this.earning);
