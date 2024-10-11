@@ -164,9 +164,7 @@ public class DashboardApple extends javax.swing.JFrame {
         cG = new javax.swing.JLabel();
         eRAM = new javax.swing.JLabel();
         eFA = new javax.swing.JLabel();
-
         PenaljLabel = new javax.swing.JLabel();
-        aPB = new javax.swing.JLabel();
         PlacaBasejLabel = new javax.swing.JLabel();
         FuenteAlimjLabel = new javax.swing.JLabel();
         NodeComputadoras1 = new javax.swing.JLabel();
@@ -218,7 +216,7 @@ public class DashboardApple extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         NodeComputadoras.setText("Computador con tarjeta gráfica:");
-        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 190, 20));
+        getContentPane().add(NodeComputadoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 20));
 
         jLabel2.setText("Placa Base");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
@@ -245,7 +243,7 @@ public class DashboardApple extends javax.swing.JFrame {
         getContentPane().add(Costs, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 80, -1));
 
         cG.setText("0");
-        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 50, -1));
+        getContentPane().add(cG, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, 50, -1));
 
         eRAM.setText("1");
         getContentPane().add(eRAM, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 10, -1));
@@ -263,13 +261,13 @@ public class DashboardApple extends javax.swing.JFrame {
         getContentPane().add(FuenteAlimjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 50, -1));
 
         NodeComputadoras1.setText("Computador Estándar:");
-        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 120, 20));
+        getContentPane().add(NodeComputadoras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 120, 20));
 
         RAMjLabel.setText("0 / 55");
         getContentPane().add(RAMjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 50, -1));
 
         cE.setText("0");
-        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 50, -1));
+        getContentPane().add(cE, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 50, -1));
 
         jLabel20.setText("Director");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
@@ -434,13 +432,13 @@ public class DashboardApple extends javax.swing.JFrame {
         getContentPane().add(mApple, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 20, -1));
 
         DirectorStatusjLabel.setText("\"estado\"");
-        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 370, -1));
+        getContentPane().add(DirectorStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 80, -1));
 
         PMStatusjLabel.setText("\"estado\"");
-        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 370, -1));
+        getContentPane().add(PMStatusjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 80, -1));
 
         FaultsjLabel.setText("0");
-        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 80, 20));
+        getContentPane().add(FaultsjLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 30, 20));
 
         dFA1.setText("-");
         dFA1.addActionListener(new java.awt.event.ActionListener() {
@@ -547,7 +545,7 @@ public class DashboardApple extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CPUjLabel;
-    private javax.swing.JLabel CostsjLabel;
+    private javax.swing.JLabel Costs;
     private javax.swing.JLabel DirectorStatusjLabel;
     private javax.swing.JLabel EarningjLabel;
     private javax.swing.JLabel FaultsjLabel;
