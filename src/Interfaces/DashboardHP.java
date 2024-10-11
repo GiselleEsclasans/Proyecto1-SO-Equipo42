@@ -26,8 +26,12 @@ public class DashboardHP extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        showInfo();
     }
     
+    public void showInfo() {
+        this.hp.setWindowHP(this);
+    }
     
     
     public void updateComputerCount(int count) {
