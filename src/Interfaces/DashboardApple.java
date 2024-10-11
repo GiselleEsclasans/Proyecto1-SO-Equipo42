@@ -8,6 +8,7 @@ import Classes.Company;
 import Classes.Employee;
 import Classes.Storage;
 import DataStructure.Data;
+import javax.swing.JLabel;
 
 /**
  *
@@ -28,9 +29,19 @@ public class DashboardApple extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        
+
+        showInfo();
+
     }
     
+    public void showInfo() {
+        this.apple.setWindowApple(this);
+        this.apple.printApple();
+    }
+    
+    public JLabel getEpb2() {
+        return ePB2;
+    }
     
     
     public void updateComputerCount(int count) {
