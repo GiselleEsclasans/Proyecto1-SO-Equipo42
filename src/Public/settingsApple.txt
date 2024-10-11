@@ -1,2 +1,2 @@
-Duracion del dia (segundos): 7
-Dias para entrega: 30
+Duracion del dia (segundos): 5
+Dias para entrega: 31
