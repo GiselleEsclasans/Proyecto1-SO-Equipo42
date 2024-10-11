@@ -82,9 +82,9 @@ public class ProjectManager extends Thread {
     public void updateStatus(String status) {
         if (dApple != null || dHP != null) {
             if (this.companyName == "APPLE") {
-                dApple.updatePMStatus(status  + daysLeft);
+                dApple.updatePMStatus(daysLeft + " días. " + status);
             } else {
-                dHP.updatePMStatus(status + daysLeft);
+                dHP.updatePMStatus(daysLeft + " días. " + status);
             }
         }
     }
