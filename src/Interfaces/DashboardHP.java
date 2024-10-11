@@ -24,8 +24,8 @@ public class DashboardHP extends javax.swing.JFrame {
         this.hp = hp;
         this.apple = apple;
         initComponents();
-        this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
         showInfo();
         
     }
